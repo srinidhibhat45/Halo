@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Platform-neutral logic (model, JSON, geometry, interaction, catalog, motion maths).
+       No Windows APIs, so it builds and is tested on any OS. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Halo.Core</RootNamespace>
+    <IsTrimmable>true</IsTrimmable>
+  </PropertyGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="Halo.Core.Tests" />
+  </ItemGroup>
+</Project>

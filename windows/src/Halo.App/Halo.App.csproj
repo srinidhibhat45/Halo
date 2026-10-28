@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- The Windows app: tray icon, global trigger, ring overlay, actions, settings, updates. -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>Halo</AssemblyName>
+    <RootNamespace>Halo.App</RootNamespace>
+    <StartupObject>Halo.App.Program</StartupObject>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets\Halo.ico</ApplicationIcon>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <!-- Lets the app compile (not run) on macOS/Linux; harmless on Windows. -->
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <Title>Halo</Title>
+    <Description>A ring of actions around your pointer.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Program.Main runs Velopack's hooks and the single-instance check before WPF starts. -->
+    <ApplicationDefinition Remove="App.xaml" />
+    <Page Include="App.xaml" />
+    <Resource Include="Assets\Halo.ico" />
+    <Resource Include="Assets\HaloLogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- WPF leaves System.IO out of implicit usings (Path clashes with System.Windows.Shapes.Path). -->
+    <Using Include="System.IO" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Velopack" Version="1.2.161" />
+    <PackageReference Include="System.Management" Version="10.0.14" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Halo.Core\Halo.Core.csproj" />
+  </ItemGroup>
+</Project>

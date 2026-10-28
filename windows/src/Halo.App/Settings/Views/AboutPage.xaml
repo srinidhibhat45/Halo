@@ -1,0 +1,47 @@
+<UserControl x:Class="Halo.App.Settings.Views.AboutPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:ClassModifier="internal">
+  <ScrollViewer VerticalScrollBarVisibility="Auto" Focusable="False">
+    <StackPanel Margin="24,16,32,24" MaxWidth="720" HorizontalAlignment="Left">
+      <StackPanel Orientation="Horizontal" Margin="0,8,0,16">
+        <Image Source="pack://application:,,,/Assets/HaloLogo.png" Width="96" Height="96" AutomationProperties.Name="Halo icon" />
+        <StackPanel Margin="20,0,0,0" VerticalAlignment="Center">
+          <TextBlock Text="Halo for Windows" FontSize="28" FontWeight="SemiBold" />
+          <TextBlock Text="{Binding VersionText}" Style="{StaticResource Secondary}" />
+          <TextBlock Text="A ring of actions around your pointer." Style="{StaticResource Secondary}" />
+        </StackPanel>
+      </StackPanel>
+
+      <TextBlock Text="Updates" Style="{StaticResource SectionHeader}" />
+      <Border Style="{StaticResource Card}">
+        <StackPanel>
+          <TextBlock Text="{Binding Updates.Summary}" TextWrapping="Wrap" Margin="0,0,0,8" AutomationProperties.LiveSetting="Polite" />
+          <StackPanel Orientation="Horizontal">
+            <Button Content="Check for Updates" Command="{Binding CheckCommand}" Margin="0,0,8,0" />
+            <Button Content="Restart to Update" Command="{Binding RestartCommand}" Style="{DynamicResource AccentButtonStyle}"
+                    Visibility="{Binding Updates.CanRestartToUpdate, Converter={StaticResource BoolToVisibility}}" />
+          </StackPanel>
+          <CheckBox Content="Check for updates automatically (on launch and daily)" IsChecked="{Binding ChecksForUpdates}" Margin="0,12,0,0" />
+        </StackPanel>
+      </Border>
+
+      <TextBlock Text="Using the ring" Style="{StaticResource SectionHeader}" />
+      <Border Style="{StaticResource Card}">
+        <TextBlock TextWrapping="Wrap" LineHeight="22">
+          Press the shortcut: the ring opens at the pointer. Point at a slot and click it, or hold the shortcut, point and let go.
+          <LineBreak />Number keys 1–9 and 0 choose a slot; arrow keys and Tab move the highlight; Enter runs it; Esc goes back or closes.
+          <LineBreak />Rest on a folder to open it; Backspace or a click on the centre goes back. Ctrl+click a slot to edit it here.
+        </TextBlock>
+      </Border>
+
+      <TextBlock Text="Your configuration" Style="{StaticResource SectionHeader}" />
+      <Border Style="{StaticResource Card}">
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Text="Rings and settings are saved in %APPDATA%\Halo." VerticalAlignment="Center" Margin="0,0,16,0" />
+          <Button Content="Open Folder" Command="{Binding OpenConfigFolderCommand}" />
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

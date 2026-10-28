@@ -1,0 +1,82 @@
+<Window x:Class="Halo.App.Settings.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:Halo.App.Settings.ViewModels"
+        xmlns:views="clr-namespace:Halo.App.Settings.Views"
+        x:ClassModifier="internal"
+        Title="Halo Settings" Width="1040" Height="720" MinWidth="820" MinHeight="560"
+        WindowStartupLocation="CenterScreen" Icon="pack://application:,,,/Assets/Halo.ico">
+  <Window.Resources>
+    <DataTemplate DataType="{x:Type vm:RingEditorViewModel}">
+      <views:RingPage />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:GeneralViewModel}">
+      <views:GeneralPage />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AppearanceViewModel}">
+      <views:AppearancePage />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AboutViewModel}">
+      <views:AboutPage />
+    </DataTemplate>
+    <CollectionViewSource x:Key="Sidebar" Source="{Binding SidebarItems}">
+      <CollectionViewSource.GroupDescriptions>
+        <PropertyGroupDescription PropertyName="Section" />
+      </CollectionViewSource.GroupDescriptions>
+    </CollectionViewSource>
+  </Window.Resources>
+  <Window.InputBindings>
+    <KeyBinding Key="Z" Modifiers="Control" Command="{Binding UndoCommand}" />
+    <KeyBinding Key="Y" Modifiers="Control" Command="{Binding RedoCommand}" />
+  </Window.InputBindings>
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="250" />
+      <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+    <DockPanel Margin="12,16,8,12">
+      <Button DockPanel.Dock="Bottom" Command="{Binding AddAppRingCommand}" HorizontalAlignment="Stretch" Margin="0,8,0,0"
+              AutomationProperties.Name="Add an app ring">
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Text="&#xE710;" FontFamily="{StaticResource IconFont}" VerticalAlignment="Center" Margin="0,0,8,0" />
+          <TextBlock Text="Add App Ring…" />
+        </StackPanel>
+      </Button>
+      <ListBox ItemsSource="{Binding Source={StaticResource Sidebar}}" SelectedItem="{Binding SelectedItem}"
+               AutomationProperties.Name="Rings and settings" BorderThickness="0" Background="Transparent">
+        <ListBox.GroupStyle>
+          <GroupStyle>
+            <GroupStyle.HeaderTemplate>
+              <DataTemplate>
+                <TextBlock Text="{Binding Name}" FontWeight="SemiBold" Opacity="0.7" Margin="8,14,0,4" />
+              </DataTemplate>
+            </GroupStyle.HeaderTemplate>
+          </GroupStyle>
+        </ListBox.GroupStyle>
+        <ListBox.ItemContainerStyle>
+          <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+            <Setter Property="AutomationProperties.Name" Value="{Binding AutomationName}" />
+          </Style>
+        </ListBox.ItemContainerStyle>
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <StackPanel Orientation="Horizontal" Margin="2,4">
+              <Grid Width="20" Height="20" Margin="0,0,10,0">
+                <TextBlock x:Name="Glyph" Text="{Binding Glyph}" FontFamily="{StaticResource IconFont}" FontSize="16"
+                           HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <Image x:Name="Icon" Source="{Binding Icon}" />
+              </Grid>
+              <TextBlock Text="{Binding Title}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
+            </StackPanel>
+            <DataTemplate.Triggers>
+              <DataTrigger Binding="{Binding Icon}" Value="{x:Null}">
+                <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+              </DataTrigger>
+            </DataTemplate.Triggers>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+    </DockPanel>
+    <ContentControl Grid.Column="1" Content="{Binding SelectedPage}" Focusable="False" />
+  </Grid>
+</Window>

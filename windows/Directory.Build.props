@@ -1,0 +1,17 @@
+<Project>
+  <!-- Shared by every project under windows/. -->
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Deterministic>true</Deterministic>
+    <Product>Halo</Product>
+    <Company>Halo</Company>
+    <Copyright>Halo contributors</Copyright>
+    <NeutralLanguage>en</NeutralLanguage>
+    <!-- One version for both apps: the repository's VERSION file (a release tag can override it). -->
+    <HaloVersionFile>$(MSBuildThisFileDirectory)../VERSION</HaloVersionFile>
+    <Version Condition="'$(Version)' == '' And Exists('$(HaloVersionFile)')">$([System.IO.File]::ReadAllText('$(HaloVersionFile)').Trim())</Version>
+  </PropertyGroup>
+</Project>

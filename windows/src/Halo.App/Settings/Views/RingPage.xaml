@@ -1,0 +1,105 @@
+<UserControl x:Class="Halo.App.Settings.Views.RingPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:ClassModifier="internal">
+  <Grid Margin="24,16,24,16">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="320" />
+    </Grid.ColumnDefinitions>
+
+    <!-- Title, back, slot count, undo/redo, Try It -->
+    <DockPanel Grid.ColumnSpan="2" LastChildFill="True">
+      <Button DockPanel.Dock="Left" Style="{StaticResource IconButton}" Content="&#xE72B;" Margin="0,0,12,0" VerticalAlignment="Center"
+              Command="{Binding BackCommand}" Visibility="{Binding IsInFolder, Converter={StaticResource BoolToVisibility}}"
+              AutomationProperties.Name="Back to the parent ring" ToolTip="Back" />
+      <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
+        <TextBlock Text="Slots" VerticalAlignment="Center" Margin="0,0,8,0" />
+        <ComboBox ItemsSource="{Binding SlotCountChoices}" SelectedItem="{Binding SlotCount}" Width="76"
+                  AutomationProperties.Name="Number of slots" />
+        <Button Style="{StaticResource IconButton}" Content="&#xE7A7;" Command="{Binding UndoCommand}" Margin="12,0,4,0"
+                AutomationProperties.Name="Undo" ToolTip="Undo (Ctrl+Z)" />
+        <Button Style="{StaticResource IconButton}" Content="&#xE7A6;" Command="{Binding RedoCommand}" Margin="0,0,12,0"
+                AutomationProperties.Name="Redo" ToolTip="Redo (Ctrl+Y)" />
+        <Button Content="Try It" Command="{Binding TryItCommand}" Style="{DynamicResource AccentButtonStyle}"
+                AutomationProperties.HelpText="Opens this ring at the centre of the screen" />
+      </StackPanel>
+      <TextBlock Text="{Binding Breadcrumb}" Style="{StaticResource PageTitle}" Margin="0" VerticalAlignment="Center" />
+    </DockPanel>
+
+    <!-- App ring options -->
+    <WrapPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="0,12,0,0" Visibility="{Binding IsAppRing, Converter={StaticResource BoolToVisibility}}">
+      <CheckBox Content="Use this ring while the app is in front" IsChecked="{Binding IsEnabled}" Margin="0,0,24,0" />
+      <CheckBox Content="Fill empty slots from Everywhere" IsChecked="{Binding InheritsGlobalSlots}" Margin="0,0,24,0" />
+      <Button Content="Remove App Ring" Command="{Binding RemoveAppRingCommand}" />
+    </WrapPanel>
+
+    <!-- The ring: click a slot to select it, double-click a folder to open it -->
+    <Border Grid.Row="2" x:Name="CanvasHost" Margin="0,16,16,0" CornerRadius="8" ClipToBounds="True"
+            Background="{DynamicResource LayerFillColorDefaultBrush}"
+            AutomationProperties.Name="Ring preview" AutomationProperties.HelpText="Click a slot to select it; use the slot list for the keyboard." />
+
+    <!-- Inspector and slot list -->
+    <DockPanel Grid.Row="2" Grid.Column="1" Margin="0,16,0,0">
+      <Border DockPanel.Dock="Top" Style="{StaticResource Card}" Margin="0,0,0,12">
+        <StackPanel>
+          <TextBlock Text="{Binding SelectedSlot.Title, FallbackValue='Select a slot'}" FontSize="18" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
+          <TextBlock Text="{Binding SelectedSlot.Subtitle}" Style="{StaticResource Secondary}" Margin="0,2,0,8" />
+          <TextBlock Text="{Binding SelectedSlot.AvailabilityNote}" TextWrapping="Wrap" Foreground="{DynamicResource SystemFillColorCautionBrush}" Margin="0,0,0,8" />
+          <Button Content="Choose Action…" Command="{Binding ChooseActionCommand}" HorizontalAlignment="Stretch" Style="{DynamicResource AccentButtonStyle}" />
+          <TextBlock Text="Label" Margin="0,12,0,4" />
+          <TextBox Text="{Binding SlotLabel}" AutomationProperties.Name="Slot label" ToolTip="{Binding SlotLabelPlaceholder}"
+                   IsEnabled="{Binding CanEditLabel}" />
+          <TextBlock Style="{StaticResource Secondary}" FontSize="12" Margin="0,4,0,0">
+            <Run Text="Leave empty to use " /><Run Text="{Binding SlotLabelPlaceholder, Mode=OneWay}" />
+          </TextBlock>
+          <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
+            <Button Content="Open Folder" Command="{Binding OpenFolderCommand}" Margin="0,0,8,0" />
+            <Button Content="Clear Slot" Command="{Binding ClearSlotCommand}" />
+          </StackPanel>
+        </StackPanel>
+      </Border>
+      <ListBox x:Name="SlotList" ItemsSource="{Binding Slots}" SelectedItem="{Binding SelectedSlot}"
+               AutomationProperties.Name="Slots" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListBox.ItemContainerStyle>
+          <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+            <Setter Property="AutomationProperties.Name" Value="{Binding AutomationName}" />
+          </Style>
+        </ListBox.ItemContainerStyle>
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <Grid Margin="2,3">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="22" />
+                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="*" />
+              </Grid.ColumnDefinitions>
+              <TextBlock Text="{Binding Number}" Opacity="0.6" VerticalAlignment="Center" />
+              <Grid Grid.Column="1" Width="22" Height="22">
+                <TextBlock Text="{Binding Glyph}" FontFamily="{StaticResource IconFont}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <Image x:Name="Icon" Source="{Binding AppIcon}" />
+              </Grid>
+              <StackPanel Grid.Column="2" Margin="6,0,0,0">
+                <TextBlock x:Name="Title" Text="{Binding Title}" TextTrimming="CharacterEllipsis" />
+                <TextBlock Text="{Binding Subtitle}" Opacity="0.65" FontSize="12" TextTrimming="CharacterEllipsis" />
+              </StackPanel>
+            </Grid>
+            <DataTemplate.Triggers>
+              <DataTrigger Binding="{Binding AppIcon}" Value="{x:Null}">
+                <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+              </DataTrigger>
+              <DataTrigger Binding="{Binding IsEmpty}" Value="True">
+                <Setter TargetName="Title" Property="Opacity" Value="0.55" />
+              </DataTrigger>
+            </DataTemplate.Triggers>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+    </DockPanel>
+  </Grid>
+</UserControl>

@@ -1,0 +1,3295 @@
+[
+  {
+    "app": "Microsoft Teams",
+    "macBundleIDs": [
+      "com.microsoft.teams2",
+      "com.microsoft.teams"
+    ],
+    "windowsProcess": "ms-teams.exe",
+    "notes": "com.microsoft.teams2 = new Teams, verified on this Mac (26276.505). com.microsoft.teams = classic Teams (not installed here; retired). Windows: ms-teams.exe is new Teams, Teams.exe was classic (process names not verified on a Windows PC). Shortcuts are the Mac app column; the Teams web app differs for some (e.g. accept video call). Microsoft documents editing shortcuts in the Teams desktop app (Ctrl+. opens the Keyboard shortcuts window) and, since mid-2025, choosing a meeting-app shortcut layout in that dialog (Message center MC992216); a changed layout or custom key breaks these defaults.",
+    "actions": [
+      {
+        "id": "teams.mute",
+        "title": "Mute / Unmute",
+        "mac": "⇧⌘M",
+        "windows": "Ctrl+Shift+M",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-microsoft-teams-2e8e2a70-e8d8-4a19-949b-4c36dd5292d2"
+      },
+      {
+        "id": "teams.camera",
+        "title": "Camera On / Off",
+        "mac": "⇧⌘O",
+        "windows": "Ctrl+Shift+O",
+        "notes": "Teams web on Windows has no shortcut for this.",
+        "source": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-microsoft-teams-2e8e2a70-e8d8-4a19-949b-4c36dd5292d2"
+      },
+      {
+        "id": "teams.raiseHand",
+        "title": "Raise / Lower Hand",
+        "mac": "⇧⌘K",
+        "windows": "Ctrl+Shift+K",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-microsoft-teams-2e8e2a70-e8d8-4a19-949b-4c36dd5292d2"
+      },
+      {
+        "id": "teams.share",
+        "title": "Share Content",
+        "mac": "⇧⌘E",
+        "windows": "Ctrl+Shift+E",
+        "notes": "Toggles the share-content tray; you still pick what to share, so this stays in Teams.",
+        "source": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-microsoft-teams-2e8e2a70-e8d8-4a19-949b-4c36dd5292d2"
+      },
+      {
+        "id": "teams.hangUp",
+        "title": "Hang Up",
+        "mac": "⇧⌘H",
+        "windows": "Ctrl+Shift+H",
+        "notes": "Documented as End audio call / End video call.",
+        "source": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-microsoft-teams-2e8e2a70-e8d8-4a19-949b-4c36dd5292d2"
+      },
+      {
+        "id": "teams.captions",
+        "title": "Live Captions",
+        "mac": "⇧⌘A",
+        "windows": null,
+        "notes": "Mac only. Microsoft lists the same ⇧⌘A for Accept audio call (incoming-call toast). No Windows shortcut is documented.",
+        "source": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-microsoft-teams-2e8e2a70-e8d8-4a19-949b-4c36dd5292d2"
+      },
+      {
+        "id": "teams.acceptAudio",
+        "title": "Accept Audio Call",
+        "mac": "⇧⌘A",
+        "windows": "Ctrl+Shift+S",
+        "notes": "Same Mac keys as Live Captions; acts on the incoming-call notification.",
+        "source": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-microsoft-teams-2e8e2a70-e8d8-4a19-949b-4c36dd5292d2"
+      },
+      {
+        "id": "teams.acceptVideo",
+        "title": "Accept Video Call",
+        "mac": "⇧⌘V",
+        "windows": "Ctrl+Shift+A",
+        "notes": "Stays in Teams so you see the call. Teams web uses ⇧⌘A / Alt+Shift+A instead.",
+        "source": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-microsoft-teams-2e8e2a70-e8d8-4a19-949b-4c36dd5292d2"
+      },
+      {
+        "id": "teams.decline",
+        "title": "Decline Call",
+        "mac": "⇧⌘D",
+        "windows": "Ctrl+Shift+D",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-microsoft-teams-2e8e2a70-e8d8-4a19-949b-4c36dd5292d2"
+      },
+      {
+        "id": "teams.admitLobby",
+        "title": "Admit from Lobby",
+        "mac": "⇧⌘Y",
+        "windows": "Ctrl+Shift+Y",
+        "notes": "Acts on the lobby notification.",
+        "source": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-microsoft-teams-2e8e2a70-e8d8-4a19-949b-4c36dd5292d2"
+      },
+      {
+        "id": "teams.speaker",
+        "title": "Toggle Speaker",
+        "mac": null,
+        "windows": "Ctrl+Shift+U",
+        "notes": "Windows only; no Mac shortcut documented.",
+        "source": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-microsoft-teams-2e8e2a70-e8d8-4a19-949b-4c36dd5292d2"
+      },
+      {
+        "id": "teams.temporaryUnmute",
+        "title": "Temporarily Unmute (hold)",
+        "mac": "⌥Space (hold)",
+        "windows": "Ctrl+Space (hold)",
+        "notes": "Push-to-talk: must be held, so a ring tap can't do it. Needs Settings > Privacy > Keyboard shortcut to unmute turned on.",
+        "source": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-microsoft-teams-2e8e2a70-e8d8-4a19-949b-4c36dd5292d2"
+      },
+      {
+        "id": "teams.meetingChat",
+        "title": "Open Meeting Chat (from notification)",
+        "mac": "⌃⌘C",
+        "windows": "Ctrl+Shift+R",
+        "notes": "Only from the meeting-start notification; Teams documents no shortcut to open chat inside a running meeting.",
+        "source": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-microsoft-teams-2e8e2a70-e8d8-4a19-949b-4c36dd5292d2"
+      },
+      {
+        "id": "teams.reactions",
+        "title": "Reactions (Like, Love, Applause, Laugh, Surprise)",
+        "mac": null,
+        "windows": null,
+        "notes": "No default shortcut exists for meeting reactions on any platform. The shortcuts page has none, and the meeting-controls page only describes the React menu.",
+        "source": "https://support.microsoft.com/en-us/teams/meetings/use-meeting-controls-in-microsoft-teams"
+      },
+      {
+        "id": "teams.backgroundBlur",
+        "title": "Background Blur / Effects",
+        "mac": null,
+        "windows": null,
+        "notes": "Not in Microsoft's current shortcut list (More > Apply background effects only). Ctrl+Shift+P / ⇧⌘P is quoted by third-party sites from classic Teams and is not documented by Microsoft, so it's left out.",
+        "source": "https://support.microsoft.com/en-us/teams/meetings/use-meeting-controls-in-microsoft-teams"
+      },
+      {
+        "id": "teams.shortcutsWindow",
+        "title": "Show / Edit Keyboard Shortcuts",
+        "mac": "⌘.",
+        "windows": "Ctrl+. (or Alt+/)",
+        "notes": "Also where you set custom keys or pick a meeting-app layout (MC992216).",
+        "source": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-microsoft-teams-2e8e2a70-e8d8-4a19-949b-4c36dd5292d2"
+      }
+    ]
+  },
+  {
+    "app": "Zoom Workplace",
+    "macBundleIDs": [
+      "us.zoom.xos"
+    ],
+    "windowsProcess": "Zoom.exe",
+    "notes": "Bundle ID verified on this Mac (7.2.2). Shortcuts can be edited in Settings > Keyboard shortcuts. Many can be made global (work while Zoom isn't in front) by ticking the box next to them there; with the global box ticked Halo's bring-forward step isn't needed. Press-and-hold Space to temporarily unmute is a separate setting. Windows Alt+S / Alt+T need the meeting toolbar to have focus.",
+    "actions": [
+      {
+        "id": "zoom.mute",
+        "title": "Mute / Unmute",
+        "mac": "⇧⌘A",
+        "windows": "Alt+A",
+        "notes": null,
+        "source": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0067050"
+      },
+      {
+        "id": "zoom.camera",
+        "title": "Camera On / Off",
+        "mac": "⇧⌘V",
+        "windows": "Alt+V",
+        "notes": null,
+        "source": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0067050"
+      },
+      {
+        "id": "zoom.raiseHand",
+        "title": "Raise / Lower Hand",
+        "mac": "⌥Y",
+        "windows": "Alt+Y",
+        "notes": null,
+        "source": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0067050"
+      },
+      {
+        "id": "zoom.share",
+        "title": "Start / Stop Share",
+        "mac": "⇧⌘S",
+        "windows": "Alt+S",
+        "notes": "Opens the share picker when starting, so this stays in Zoom. Windows needs the meeting toolbar focused.",
+        "source": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0067050"
+      },
+      {
+        "id": "zoom.chat",
+        "title": "Show / Hide Chat",
+        "mac": "⇧⌘H",
+        "windows": "Alt+H",
+        "notes": null,
+        "source": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0067050"
+      },
+      {
+        "id": "zoom.participants",
+        "title": "Show / Hide Participants",
+        "mac": "⌘U",
+        "windows": "Alt+U",
+        "notes": null,
+        "source": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0067050"
+      },
+      {
+        "id": "zoom.reactionsPanel",
+        "title": "Reactions Panel",
+        "mac": "⇧⌘Y",
+        "windows": "Ctrl+Shift+Y",
+        "notes": null,
+        "source": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0067050"
+      },
+      {
+        "id": "zoom.thumbsUp",
+        "title": "React: Thumbs Up",
+        "mac": "⌥⌘5",
+        "windows": "Alt+Shift+5",
+        "notes": null,
+        "source": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0067050"
+      },
+      {
+        "id": "zoom.clap",
+        "title": "React: Clap",
+        "mac": "⌥⌘4",
+        "windows": "Alt+Shift+4",
+        "notes": null,
+        "source": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0067050"
+      },
+      {
+        "id": "zoom.heart",
+        "title": "React: Heart",
+        "mac": "⌥⌘6",
+        "windows": "Alt+Shift+6",
+        "notes": null,
+        "source": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0067050"
+      },
+      {
+        "id": "zoom.joy",
+        "title": "React: Joy",
+        "mac": "⌥⌘7",
+        "windows": "Alt+Shift+7",
+        "notes": null,
+        "source": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0067050"
+      },
+      {
+        "id": "zoom.wow",
+        "title": "React: Wow (Open Mouth)",
+        "mac": "⌥⌘8",
+        "windows": "Alt+Shift+8",
+        "notes": null,
+        "source": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0067050"
+      },
+      {
+        "id": "zoom.tada",
+        "title": "React: Celebrate (Tada)",
+        "mac": "⌥⌘9",
+        "windows": "Alt+Shift+9",
+        "notes": null,
+        "source": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0067050"
+      },
+      {
+        "id": "zoom.leave",
+        "title": "Leave Meeting",
+        "mac": "⌘W",
+        "windows": "Alt+Q",
+        "notes": "Windows: 'Display prompt to end or leave meeting'. Mac has no dedicated entry; Zoom lists ⌘W as 'Close the current window', which in the meeting window brings up the leave prompt (inferred). Either way you confirm in Zoom.",
+        "source": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0067050"
+      },
+      {
+        "id": "zoom.answerCall",
+        "title": "Answer Call (Zoom Phone)",
+        "mac": "⌃⇧A",
+        "windows": "Ctrl+Shift+A",
+        "notes": "Zoom Phone incoming calls, not meeting invites.",
+        "source": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0067050"
+      },
+      {
+        "id": "zoom.declineCall",
+        "title": "Decline Call (Zoom Phone)",
+        "mac": "⌃⇧D",
+        "windows": "Ctrl+Shift+D",
+        "notes": null,
+        "source": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0067050"
+      },
+      {
+        "id": "zoom.record",
+        "title": "Start / Stop Local Recording",
+        "mac": "⇧⌘R",
+        "windows": "Alt+R",
+        "notes": null,
+        "source": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0067050"
+      },
+      {
+        "id": "zoom.pauseShare",
+        "title": "Pause / Resume Share",
+        "mac": "⇧⌘T",
+        "windows": "Alt+T",
+        "notes": null,
+        "source": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0067050"
+      },
+      {
+        "id": "zoom.fullScreen",
+        "title": "Enter / Exit Full Screen",
+        "mac": "⇧⌘F",
+        "windows": "Alt+F",
+        "notes": null,
+        "source": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0067050"
+      },
+      {
+        "id": "zoom.captions",
+        "title": "Captions",
+        "mac": null,
+        "windows": null,
+        "notes": "Zoom's shortcut list has no captions shortcut.",
+        "source": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0067050"
+      },
+      {
+        "id": "zoom.backgroundBlur",
+        "title": "Background Blur",
+        "mac": null,
+        "windows": null,
+        "notes": "No shortcut documented.",
+        "source": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0067050"
+      },
+      {
+        "id": "zoom.pushToTalk",
+        "title": "Push to Talk (hold Space)",
+        "mac": "Space (hold)",
+        "windows": "Space (hold)",
+        "notes": "Must be held and needs the 'Press and hold SPACE key to temporarily unmute yourself' setting; a ring tap can't do it.",
+        "source": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0067050"
+      }
+    ]
+  },
+  {
+    "app": "Google Meet",
+    "macBundleIDs": [
+      "com.google.Chrome.app.kjgfgldnnfoeklkmfkjfagphfepbbdan",
+      "com.google.Chrome",
+      "com.apple.Safari",
+      "company.thebrowser.Browser",
+      "com.microsoft.edgemac",
+      "com.brave.Browser",
+      "org.mozilla.firefox"
+    ],
+    "windowsProcess": null,
+    "notes": "Meet runs in a browser, so these go to the browser and only work when the Meet tab is the active tab. Otherwise the browser handles them itself (⌘D bookmarks the page in Chrome/Edge/Brave). The installed Meet web app is safer because its window is the meeting. Bundle IDs: com.google.Chrome.app.kjgfgldnnfoeklkmfkjfagphfepbbdan is the Chrome-installed Meet app (inferred: Chromium's kGoogleMeetAppId plus Chrome's 'com.google.Chrome.app.<app id>' shim format; not installed here). Chrome, Safari, Edge and Brave are verified on this Mac; Arc (company.thebrowser.Browser) and Firefox (org.mozilla.firefox) are not installed here. Windows: match the browser process (chrome.exe, msedge.exe, brave.exe, firefox.exe, Arc.exe). Full list in a call: Shift+?.",
+    "actions": [
+      {
+        "id": "meet.mute",
+        "title": "Mute / Unmute",
+        "mac": "⌘D",
+        "windows": "Ctrl+D",
+        "notes": null,
+        "source": "https://support.google.com/a/users/answer/9896256?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "id": "meet.camera",
+        "title": "Camera On / Off",
+        "mac": "⌘E",
+        "windows": "Ctrl+E",
+        "notes": null,
+        "source": "https://support.google.com/a/users/answer/9896256?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "id": "meet.raiseHand",
+        "title": "Raise / Lower Hand",
+        "mac": "⌃⌘H",
+        "windows": "Ctrl+Alt+H",
+        "notes": null,
+        "source": "https://support.google.com/a/users/answer/9896256?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "id": "meet.chat",
+        "title": "Show / Hide Chat",
+        "mac": "⌃⌘C",
+        "windows": "Ctrl+Alt+C",
+        "notes": null,
+        "source": "https://support.google.com/a/users/answer/9896256?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "id": "meet.participants",
+        "title": "Show / Hide People",
+        "mac": "⌃⌘P",
+        "windows": "Ctrl+Alt+P",
+        "notes": null,
+        "source": "https://support.google.com/a/users/answer/9896256?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "id": "meet.captions",
+        "title": "Captions On / Off",
+        "mac": "C",
+        "windows": "C",
+        "notes": "Plain C (Shift+C also works).",
+        "source": "https://support.google.com/a/users/answer/9896256?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "id": "meet.present",
+        "title": "Start Presenting",
+        "mac": "⌃⌘T",
+        "windows": "Ctrl+Alt+T",
+        "notes": "Opens the browser's share picker, so this stays in the browser.",
+        "source": "https://support.google.com/a/users/answer/9896256?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "id": "meet.pip",
+        "title": "Picture-in-Picture",
+        "mac": "⇧M",
+        "windows": "Shift+M",
+        "notes": null,
+        "source": "https://support.google.com/a/users/answer/9896256?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "id": "meet.moreTiles",
+        "title": "Increase Participant Tiles",
+        "mac": "⌃⌘K",
+        "windows": "Ctrl+Alt+K",
+        "notes": null,
+        "source": "https://support.google.com/a/users/answer/9896256?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "id": "meet.fewerTiles",
+        "title": "Decrease Participant Tiles",
+        "mac": "⌃⌘J",
+        "windows": "Ctrl+Alt+J",
+        "notes": null,
+        "source": "https://support.google.com/a/users/answer/9896256?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "id": "meet.pushToTalk",
+        "title": "Push to Talk (hold Space)",
+        "mac": "Space (hold)",
+        "windows": "Space (hold)",
+        "notes": "Must be held and needs Push to Talk turned on in Meet settings; a ring tap can't do it.",
+        "source": "https://support.google.com/a/users/answer/9896256?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "id": "meet.leave",
+        "title": "Leave Call",
+        "mac": null,
+        "windows": null,
+        "notes": "Google documents no leave-call shortcut.",
+        "source": "https://support.google.com/a/users/answer/9896256?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "id": "meet.reactions",
+        "title": "Reactions",
+        "mac": null,
+        "windows": null,
+        "notes": "No reaction shortcut is documented. Google's shortcut list has none; a Meet Help Community answer says none exists (community post, not documentation). Shift+R only changes how reactions are heard.",
+        "source": "https://support.google.com/meet/thread/216476128/hotkeys-for-google-meets-reactions?hl=en"
+      },
+      {
+        "id": "meet.backgroundBlur",
+        "title": "Background Blur / Effects",
+        "mac": null,
+        "windows": null,
+        "notes": "No shortcut documented.",
+        "source": "https://support.google.com/a/users/answer/9896256?hl=en&co=GENIE.Platform%3DDesktop"
+      }
+    ]
+  },
+  {
+    "app": "Slack",
+    "macBundleIDs": [
+      "com.tinyspeck.slackmacgap"
+    ],
+    "windowsProcess": "slack.exe",
+    "notes": "Bundle ID com.tinyspeck.slackmacgap is the documented Slack desktop identifier (not installed here). Slack says custom keyboard shortcuts aren't possible. Huddle shortcuts cover start/join/leave and mute only; huddle video, screen share and reactions have none. Shortcuts marked desktop-app-only in Slack's list: Threads, Activity, Upload.",
+    "actions": [
+      {
+        "id": "slack.huddle",
+        "title": "Start / Join / Leave Huddle",
+        "mac": "⇧⌘H",
+        "windows": "Ctrl+Shift+H",
+        "notes": "One shortcut starts, joins, leaves or ends a huddle in the current conversation.",
+        "source": "https://slack.com/help/articles/201374536-Slack-keyboard-shortcuts"
+      },
+      {
+        "id": "slack.huddleMute",
+        "title": "Huddle Mute / Unmute",
+        "mac": "⇧⌘Space",
+        "windows": "Ctrl+Shift+Space",
+        "notes": null,
+        "source": "https://slack.com/help/articles/201374536-Slack-keyboard-shortcuts"
+      },
+      {
+        "id": "slack.search",
+        "title": "Search",
+        "mac": "⌘G",
+        "windows": "Ctrl+G",
+        "notes": null,
+        "source": "https://slack.com/help/articles/201374536-Slack-keyboard-shortcuts"
+      },
+      {
+        "id": "slack.newMessage",
+        "title": "New Message",
+        "mac": "⌘N",
+        "windows": "Ctrl+N",
+        "notes": null,
+        "source": "https://slack.com/help/articles/201374536-Slack-keyboard-shortcuts"
+      },
+      {
+        "id": "slack.unreads",
+        "title": "All Unreads",
+        "mac": "⇧⌘A",
+        "windows": "Ctrl+Shift+A",
+        "notes": null,
+        "source": "https://slack.com/help/articles/201374536-Slack-keyboard-shortcuts"
+      },
+      {
+        "id": "slack.threads",
+        "title": "Threads",
+        "mac": "⇧⌘T",
+        "windows": "Ctrl+Shift+T",
+        "notes": "Desktop app only.",
+        "source": "https://slack.com/help/articles/201374536-Slack-keyboard-shortcuts"
+      },
+      {
+        "id": "slack.activity",
+        "title": "Activity",
+        "mac": "⇧⌘M",
+        "windows": "Ctrl+Shift+M",
+        "notes": "Desktop app only.",
+        "source": "https://slack.com/help/articles/201374536-Slack-keyboard-shortcuts"
+      },
+      {
+        "id": "slack.dms",
+        "title": "Browse DMs",
+        "mac": "⇧⌘K",
+        "windows": "Ctrl+Shift+2",
+        "notes": null,
+        "source": "https://slack.com/help/articles/201374536-Slack-keyboard-shortcuts"
+      },
+      {
+        "id": "slack.status",
+        "title": "Set Status",
+        "mac": "⇧⌘Y",
+        "windows": "Ctrl+Shift+Y",
+        "notes": null,
+        "source": "https://slack.com/help/articles/201374536-Slack-keyboard-shortcuts"
+      },
+      {
+        "id": "slack.markAllRead",
+        "title": "Mark All as Read",
+        "mac": "⇧Esc",
+        "windows": "Shift+Esc",
+        "notes": null,
+        "source": "https://slack.com/help/articles/201374536-Slack-keyboard-shortcuts"
+      },
+      {
+        "id": "slack.nextUnread",
+        "title": "Next Unread Conversation",
+        "mac": "⌥⇧↓",
+        "windows": "Alt+Shift+↓",
+        "notes": null,
+        "source": "https://slack.com/help/articles/201374536-Slack-keyboard-shortcuts"
+      },
+      {
+        "id": "slack.jumpTo",
+        "title": "Jump to Conversation",
+        "mac": null,
+        "windows": "Ctrl+K (or Ctrl+T in the desktop app)",
+        "notes": "Listed only in the Windows/Linux table; the Mac table has no entry.",
+        "source": "https://slack.com/help/articles/201374536-Slack-keyboard-shortcuts"
+      },
+      {
+        "id": "slack.huddleVideo",
+        "title": "Huddle Camera / Screen Share",
+        "mac": null,
+        "windows": null,
+        "notes": "No shortcut documented.",
+        "source": "https://slack.com/help/articles/201374536-Slack-keyboard-shortcuts"
+      }
+    ]
+  },
+  {
+    "app": "Webex",
+    "macBundleIDs": [
+      "Cisco-Systems.Spark"
+    ],
+    "windowsProcess": "CiscoCollabHost.exe",
+    "notes": "Cisco-Systems.Spark is the documented Webex App identifier (not installed here). CiscoCollabHost.exe is the main Webex App process per help.webex.com. Cisco: meeting shortcuts only apply to meetings on the Webex Suite meeting platform, not classic Webex Meetings/Webinars. Shortcuts can be changed, and some made global, under profile picture > Settings > Keyboard Shortcuts. Answer, decline, pause/stop sharing are global by default. Note the Mac column uses Control (⌃) for several, e.g. video.",
+    "actions": [
+      {
+        "id": "webex.mute",
+        "title": "Mute / Unmute",
+        "mac": "⇧⌘M",
+        "windows": "Ctrl+M",
+        "notes": null,
+        "source": "https://help.webex.com/en-us/article/7wr87q/Webex-App-%7C-Keyboard-navigation-and-shortcuts"
+      },
+      {
+        "id": "webex.camera",
+        "title": "Camera On / Off",
+        "mac": "⌃⇧V",
+        "windows": "Ctrl+Shift+V",
+        "notes": null,
+        "source": "https://help.webex.com/en-us/article/7wr87q/Webex-App-%7C-Keyboard-navigation-and-shortcuts"
+      },
+      {
+        "id": "webex.raiseHand",
+        "title": "Raise / Lower Hand",
+        "mac": "⇧⌘R",
+        "windows": "Ctrl+Shift+R",
+        "notes": null,
+        "source": "https://help.webex.com/en-us/article/7wr87q/Webex-App-%7C-Keyboard-navigation-and-shortcuts"
+      },
+      {
+        "id": "webex.share",
+        "title": "Share Content",
+        "mac": "⌃⇧D",
+        "windows": "Ctrl+Shift+D",
+        "notes": "Opens the share picker, so this stays in Webex.",
+        "source": "https://help.webex.com/en-us/article/7wr87q/Webex-App-%7C-Keyboard-navigation-and-shortcuts"
+      },
+      {
+        "id": "webex.stopShare",
+        "title": "Stop Sharing",
+        "mac": "⌃⇧Z",
+        "windows": "Ctrl+Shift+Z",
+        "notes": "Global by default.",
+        "source": "https://help.webex.com/en-us/article/7wr87q/Webex-App-%7C-Keyboard-navigation-and-shortcuts"
+      },
+      {
+        "id": "webex.chat",
+        "title": "Open / Close Chat",
+        "mac": "⇧⌘E",
+        "windows": "Ctrl+E",
+        "notes": null,
+        "source": "https://help.webex.com/en-us/article/7wr87q/Webex-App-%7C-Keyboard-navigation-and-shortcuts"
+      },
+      {
+        "id": "webex.captions",
+        "title": "Closed Captions On / Off",
+        "mac": "⌃⇧A",
+        "windows": "Ctrl+Shift+A",
+        "notes": null,
+        "source": "https://help.webex.com/en-us/article/7wr87q/Webex-App-%7C-Keyboard-navigation-and-shortcuts"
+      },
+      {
+        "id": "webex.reactionsPanel",
+        "title": "Reactions Panel",
+        "mac": "⇧⌘Y",
+        "windows": "Ctrl+Shift+Y",
+        "notes": null,
+        "source": "https://help.webex.com/en-us/article/7wr87q/Webex-App-%7C-Keyboard-navigation-and-shortcuts"
+      },
+      {
+        "id": "webex.thumbsUp",
+        "title": "React: Thumbs Up",
+        "mac": "⌥⌘4",
+        "windows": "Alt+Shift+4",
+        "notes": null,
+        "source": "https://help.webex.com/en-us/article/7wr87q/Webex-App-%7C-Keyboard-navigation-and-shortcuts"
+      },
+      {
+        "id": "webex.clap",
+        "title": "React: Clapping Hands",
+        "mac": "⌥⌘5",
+        "windows": "Alt+Shift+5",
+        "notes": null,
+        "source": "https://help.webex.com/en-us/article/7wr87q/Webex-App-%7C-Keyboard-navigation-and-shortcuts"
+      },
+      {
+        "id": "webex.haha",
+        "title": "React: Haha",
+        "mac": "⌥⌘6",
+        "windows": "Alt+Shift+6",
+        "notes": null,
+        "source": "https://help.webex.com/en-us/article/7wr87q/Webex-App-%7C-Keyboard-navigation-and-shortcuts"
+      },
+      {
+        "id": "webex.celebrate",
+        "title": "React: Celebrate",
+        "mac": "⌥⌘7",
+        "windows": "Alt+Shift+7",
+        "notes": null,
+        "source": "https://help.webex.com/en-us/article/7wr87q/Webex-App-%7C-Keyboard-navigation-and-shortcuts"
+      },
+      {
+        "id": "webex.love",
+        "title": "React: Love",
+        "mac": "⌥⌘8",
+        "windows": "Alt+Shift+8",
+        "notes": null,
+        "source": "https://help.webex.com/en-us/article/7wr87q/Webex-App-%7C-Keyboard-navigation-and-shortcuts"
+      },
+      {
+        "id": "webex.endCall",
+        "title": "End Call",
+        "mac": "⌘L",
+        "windows": "Ctrl+L",
+        "notes": "Documented as 'End a call'; no separate leave-meeting shortcut is listed.",
+        "source": "https://help.webex.com/en-us/article/7wr87q/Webex-App-%7C-Keyboard-navigation-and-shortcuts"
+      },
+      {
+        "id": "webex.answer",
+        "title": "Answer Call",
+        "mac": "⌃⇧C",
+        "windows": "Ctrl+Shift+C",
+        "notes": "Global by default.",
+        "source": "https://help.webex.com/en-us/article/7wr87q/Webex-App-%7C-Keyboard-navigation-and-shortcuts"
+      },
+      {
+        "id": "webex.decline",
+        "title": "Decline Call",
+        "mac": "⇧⌘D",
+        "windows": "Ctrl+D",
+        "notes": "Global by default.",
+        "source": "https://help.webex.com/en-us/article/7wr87q/Webex-App-%7C-Keyboard-navigation-and-shortcuts"
+      },
+      {
+        "id": "webex.pauseShare",
+        "title": "Pause / Resume Sharing",
+        "mac": "⌃⇧S",
+        "windows": "Alt+Shift+S",
+        "notes": null,
+        "source": "https://help.webex.com/en-us/article/7wr87q/Webex-App-%7C-Keyboard-navigation-and-shortcuts"
+      },
+      {
+        "id": "webex.backgroundBlur",
+        "title": "Background Blur",
+        "mac": null,
+        "windows": null,
+        "notes": "No shortcut documented.",
+        "source": "https://help.webex.com/en-us/article/7wr87q/Webex-App-%7C-Keyboard-navigation-and-shortcuts"
+      }
+    ]
+  },
+  {
+    "app": "FaceTime",
+    "macBundleIDs": [
+      "com.apple.FaceTime"
+    ],
+    "windowsProcess": null,
+    "notes": "Bundle ID verified on this Mac. Mac only. Apple documents only window shortcuts for FaceTime: there is no documented shortcut for mute, camera, end, accept/decline, screen sharing, reactions or captions.",
+    "actions": [
+      {
+        "id": "facetime.fullScreen",
+        "title": "Full Screen",
+        "mac": "⌃⌘F",
+        "windows": null,
+        "notes": "During a video call.",
+        "source": "https://support.apple.com/guide/facetime/keyboard-shortcuts-fctma3b7b94b/mac"
+      },
+      {
+        "id": "facetime.rotate",
+        "title": "Landscape / Portrait",
+        "mac": "⌘R",
+        "windows": null,
+        "notes": "During a one-on-one video call.",
+        "source": "https://support.apple.com/guide/facetime/keyboard-shortcuts-fctma3b7b94b/mac"
+      },
+      {
+        "id": "facetime.close",
+        "title": "Close FaceTime Window",
+        "mac": "⌘W",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/facetime/keyboard-shortcuts-fctma3b7b94b/mac"
+      },
+      {
+        "id": "facetime.mute",
+        "title": "Mute / Camera / End Call",
+        "mac": null,
+        "windows": null,
+        "notes": "Not documented; use the on-screen call controls.",
+        "source": "https://support.apple.com/guide/facetime/keyboard-shortcuts-fctma3b7b94b/mac"
+      }
+    ]
+  },
+  {
+    "app": "Discord",
+    "macBundleIDs": [
+      "com.hnc.Discord"
+    ],
+    "windowsProcess": "Discord.exe",
+    "notes": "com.hnc.Discord is the documented Discord identifier (not installed here). Source is Discord's own blog (Nov 2024); support.discord.com blocks automated reading. Desktop app: shortcuts work even when Discord isn't focused, and mute/deafen are listed as working in the background. Push to talk and other voice keybinds have to be set up in User Settings > Keybinds.",
+    "actions": [
+      {
+        "id": "discord.mute",
+        "title": "Mute / Unmute",
+        "mac": "⇧⌘M",
+        "windows": "Ctrl+Shift+M",
+        "notes": null,
+        "source": "https://discord.com/blog/how-to-use-keyboard-shortcuts-on-discord-create-custom-keybinds"
+      },
+      {
+        "id": "discord.deafen",
+        "title": "Deafen / Undeafen",
+        "mac": "⇧⌘D",
+        "windows": "Ctrl+Shift+D",
+        "notes": null,
+        "source": "https://discord.com/blog/how-to-use-keyboard-shortcuts-on-discord-create-custom-keybinds"
+      },
+      {
+        "id": "discord.answer",
+        "title": "Answer Call",
+        "mac": "⌘Return",
+        "windows": "Ctrl+Enter",
+        "notes": null,
+        "source": "https://discord.com/blog/how-to-use-keyboard-shortcuts-on-discord-create-custom-keybinds"
+      },
+      {
+        "id": "discord.decline",
+        "title": "Decline Call",
+        "mac": "Esc",
+        "windows": "Esc",
+        "notes": null,
+        "source": "https://discord.com/blog/how-to-use-keyboard-shortcuts-on-discord-create-custom-keybinds"
+      },
+      {
+        "id": "discord.currentCall",
+        "title": "Jump to Current Call",
+        "mac": "⌥⇧⌘V",
+        "windows": "Ctrl+Shift+Alt+V",
+        "notes": null,
+        "source": "https://discord.com/blog/how-to-use-keyboard-shortcuts-on-discord-create-custom-keybinds"
+      },
+      {
+        "id": "discord.soundboard",
+        "title": "Soundboard",
+        "mac": "⇧⌘B",
+        "windows": "Ctrl+Shift+B",
+        "notes": "In a call.",
+        "source": "https://discord.com/blog/how-to-use-keyboard-shortcuts-on-discord-create-custom-keybinds"
+      },
+      {
+        "id": "discord.quickSwitcher",
+        "title": "Quick Switcher",
+        "mac": "⌘K",
+        "windows": "Ctrl+K",
+        "notes": null,
+        "source": "https://discord.com/blog/how-to-use-keyboard-shortcuts-on-discord-create-custom-keybinds"
+      },
+      {
+        "id": "discord.emoji",
+        "title": "Emoji Picker",
+        "mac": "⌘E",
+        "windows": "Ctrl+E",
+        "notes": null,
+        "source": "https://discord.com/blog/how-to-use-keyboard-shortcuts-on-discord-create-custom-keybinds"
+      },
+      {
+        "id": "discord.upload",
+        "title": "Attach File",
+        "mac": "⇧⌘U",
+        "windows": "Ctrl+Shift+U",
+        "notes": null,
+        "source": "https://discord.com/blog/how-to-use-keyboard-shortcuts-on-discord-create-custom-keybinds"
+      },
+      {
+        "id": "discord.shortcuts",
+        "title": "Show Shortcuts",
+        "mac": "⌘/",
+        "windows": "Ctrl+/",
+        "notes": null,
+        "source": "https://discord.com/blog/how-to-use-keyboard-shortcuts-on-discord-create-custom-keybinds"
+      },
+      {
+        "id": "discord.callDM",
+        "title": "Call This DM",
+        "mac": null,
+        "windows": "Ctrl+'",
+        "notes": "Discord lists only Ctrl + ' with no Mac variant.",
+        "source": "https://discord.com/blog/how-to-use-keyboard-shortcuts-on-discord-create-custom-keybinds"
+      },
+      {
+        "id": "discord.camera",
+        "title": "Camera / Screen Share",
+        "mac": null,
+        "windows": null,
+        "notes": "No default shortcut; can be bound in User Settings > Keybinds.",
+        "source": "https://discord.com/blog/how-to-use-keyboard-shortcuts-on-discord-create-custom-keybinds"
+      },
+      {
+        "id": "discord.pushToTalk",
+        "title": "Push to Talk",
+        "mac": null,
+        "windows": null,
+        "notes": "Needs a keybind set up in User Settings > Keybinds, and must be held.",
+        "source": "https://discord.com/blog/how-to-use-keyboard-shortcuts-on-discord-create-custom-keybinds"
+      }
+    ]
+  },
+  {
+    "app": "Microsoft Outlook",
+    "macBundleIDs": [
+      "com.microsoft.Outlook"
+    ],
+    "windowsProcess": "olk.exe",
+    "notes": "Bundle ID verified on this Mac (16.114). Mac page covers Outlook for Microsoft 365 / 2024 / 2021 for Mac. Windows column is new Outlook (olk.exe); classic Outlook (OUTLOOK.EXE) differs where noted. Windows process names not verified on a Windows PC.",
+    "actions": [
+      {
+        "id": "outlook.newMessage",
+        "title": "New Message",
+        "mac": "⌘N",
+        "windows": "Ctrl+N",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/outlook/mac/keyboard-shortcuts-in-outlook-for-mac",
+        "windowsSource": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-outlook-3cdeb221-7ae5-4c1d-8c1d-9e63216c1efd"
+      },
+      {
+        "id": "outlook.reply",
+        "title": "Reply",
+        "mac": "⌘R",
+        "windows": "Ctrl+R",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/outlook/mac/keyboard-shortcuts-in-outlook-for-mac",
+        "windowsSource": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-outlook-3cdeb221-7ae5-4c1d-8c1d-9e63216c1efd"
+      },
+      {
+        "id": "outlook.replyAll",
+        "title": "Reply All",
+        "mac": "⇧⌘R",
+        "windows": "Ctrl+Shift+R",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/outlook/mac/keyboard-shortcuts-in-outlook-for-mac",
+        "windowsSource": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-outlook-3cdeb221-7ae5-4c1d-8c1d-9e63216c1efd"
+      },
+      {
+        "id": "outlook.forward",
+        "title": "Forward",
+        "mac": "⌘J",
+        "windows": "Ctrl+F",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/outlook/mac/keyboard-shortcuts-in-outlook-for-mac",
+        "windowsSource": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-outlook-3cdeb221-7ae5-4c1d-8c1d-9e63216c1efd"
+      },
+      {
+        "id": "outlook.archive",
+        "title": "Archive",
+        "mac": "⌃E",
+        "windows": null,
+        "notes": "Not listed for Windows.",
+        "source": "https://support.microsoft.com/en-us/accessibility/outlook/mac/keyboard-shortcuts-in-outlook-for-mac"
+      },
+      {
+        "id": "outlook.markRead",
+        "title": "Mark as Read",
+        "mac": "⌘T",
+        "windows": "Ctrl+Q",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/outlook/mac/keyboard-shortcuts-in-outlook-for-mac",
+        "windowsSource": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-outlook-3cdeb221-7ae5-4c1d-8c1d-9e63216c1efd"
+      },
+      {
+        "id": "outlook.markUnread",
+        "title": "Mark as Unread",
+        "mac": "⇧⌘T",
+        "windows": "Ctrl+U",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/outlook/mac/keyboard-shortcuts-in-outlook-for-mac",
+        "windowsSource": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-outlook-3cdeb221-7ae5-4c1d-8c1d-9e63216c1efd"
+      },
+      {
+        "id": "outlook.flag",
+        "title": "Flag for Follow Up",
+        "mac": "⌃=",
+        "windows": "Insert",
+        "notes": "Mac: flag with a reminder. ⌃5 flags with no due date.",
+        "source": "https://support.microsoft.com/en-us/accessibility/outlook/mac/keyboard-shortcuts-in-outlook-for-mac",
+        "windowsSource": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-outlook-3cdeb221-7ae5-4c1d-8c1d-9e63216c1efd"
+      },
+      {
+        "id": "outlook.move",
+        "title": "Move to Folder",
+        "mac": "⇧⌘M",
+        "windows": null,
+        "notes": "Windows: classic Outlook Ctrl+Shift+V; none listed for new Outlook.",
+        "source": "https://support.microsoft.com/en-us/accessibility/outlook/mac/keyboard-shortcuts-in-outlook-for-mac"
+      },
+      {
+        "id": "outlook.mail",
+        "title": "Go to Mail",
+        "mac": "⌘1",
+        "windows": "Ctrl+1",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/outlook/mac/keyboard-shortcuts-in-outlook-for-mac",
+        "windowsSource": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-outlook-3cdeb221-7ae5-4c1d-8c1d-9e63216c1efd"
+      },
+      {
+        "id": "outlook.calendar",
+        "title": "Go to Calendar",
+        "mac": "⌘2",
+        "windows": "Ctrl+2",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/outlook/mac/keyboard-shortcuts-in-outlook-for-mac",
+        "windowsSource": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-outlook-3cdeb221-7ae5-4c1d-8c1d-9e63216c1efd"
+      },
+      {
+        "id": "outlook.sync",
+        "title": "Send & Receive",
+        "mac": "⌃⌘K",
+        "windows": null,
+        "notes": "Windows: classic Outlook F9 or Ctrl+M; none listed for new Outlook.",
+        "source": "https://support.microsoft.com/en-us/accessibility/outlook/mac/keyboard-shortcuts-in-outlook-for-mac"
+      },
+      {
+        "id": "outlook.send",
+        "title": "Send",
+        "mac": "⌘Return",
+        "windows": "Ctrl+Enter",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/outlook/mac/keyboard-shortcuts-in-outlook-for-mac",
+        "windowsSource": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-outlook-3cdeb221-7ae5-4c1d-8c1d-9e63216c1efd"
+      },
+      {
+        "id": "outlook.people",
+        "title": "Go to Contacts / People",
+        "mac": "⌘3",
+        "windows": "Ctrl+4",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/outlook/mac/keyboard-shortcuts-in-outlook-for-mac",
+        "windowsSource": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-outlook-3cdeb221-7ae5-4c1d-8c1d-9e63216c1efd"
+      }
+    ]
+  },
+  {
+    "app": "Microsoft Word",
+    "macBundleIDs": [
+      "com.microsoft.Word"
+    ],
+    "windowsProcess": "WINWORD.EXE",
+    "notes": "Bundle ID verified on this Mac (16.114). Applies to Word for Microsoft 365 / 2024 for Mac and Windows. Custom shortcuts can be created on both (Mac: Tools > Customize Keyboard).",
+    "actions": [
+      {
+        "id": "word.save",
+        "title": "Save",
+        "mac": "⌘S",
+        "windows": "Ctrl+S",
+        "notes": "Mac: Microsoft's Common Office for Mac shortcuts page.",
+        "source": "https://support.microsoft.com/en-us/office/common-office-for-mac-keyboard-shortcuts-307f469a-1a05-4263-9b55-49df19a8b8ff"
+      },
+      {
+        "id": "word.trackChanges",
+        "title": "Track Changes On / Off",
+        "mac": "⇧⌘E",
+        "windows": "Ctrl+Shift+E",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/word/keyboard-shortcuts-in-word"
+      },
+      {
+        "id": "word.comment",
+        "title": "New Comment",
+        "mac": "⌥⌘A",
+        "windows": "Ctrl+Alt+M",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/word/keyboard-shortcuts-in-word"
+      },
+      {
+        "id": "word.find",
+        "title": "Find",
+        "mac": "⌘F",
+        "windows": "Ctrl+F",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/word/keyboard-shortcuts-in-word"
+      },
+      {
+        "id": "word.replace",
+        "title": "Find & Replace",
+        "mac": "⌃H",
+        "windows": "Ctrl+H",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/word/keyboard-shortcuts-in-word"
+      },
+      {
+        "id": "word.spelling",
+        "title": "Spelling & Grammar",
+        "mac": "⌥⌘L",
+        "windows": "F7",
+        "notes": "Mac also F7.",
+        "source": "https://support.microsoft.com/en-us/accessibility/word/keyboard-shortcuts-in-word"
+      },
+      {
+        "id": "word.pageBreak",
+        "title": "Page Break",
+        "mac": "⌘Return",
+        "windows": "Ctrl+Enter",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/word/keyboard-shortcuts-in-word"
+      },
+      {
+        "id": "word.heading1",
+        "title": "Heading 1",
+        "mac": "⌥⌘1",
+        "windows": "Ctrl+Alt+1",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/word/keyboard-shortcuts-in-word"
+      },
+      {
+        "id": "word.print",
+        "title": "Print",
+        "mac": "⌘P",
+        "windows": "Ctrl+P",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/word/keyboard-shortcuts-in-word"
+      },
+      {
+        "id": "word.formattingMarks",
+        "title": "Show Formatting Marks",
+        "mac": null,
+        "windows": "Ctrl+Shift+8",
+        "notes": "No Mac shortcut listed.",
+        "source": "https://support.microsoft.com/en-us/accessibility/word/keyboard-shortcuts-in-word"
+      },
+      {
+        "id": "word.hyperlink",
+        "title": "Insert Link",
+        "mac": null,
+        "windows": "Ctrl+K",
+        "notes": "No Mac shortcut listed on Microsoft's page.",
+        "source": "https://support.microsoft.com/en-us/accessibility/word/keyboard-shortcuts-in-word"
+      },
+      {
+        "id": "word.clearFormatting",
+        "title": "Clear Character Formatting",
+        "mac": null,
+        "windows": "Ctrl+Space",
+        "notes": "No Mac shortcut listed.",
+        "source": "https://support.microsoft.com/en-us/accessibility/word/keyboard-shortcuts-in-word"
+      }
+    ]
+  },
+  {
+    "app": "Microsoft Excel",
+    "macBundleIDs": [
+      "com.microsoft.Excel"
+    ],
+    "windowsProcess": "EXCEL.EXE",
+    "notes": "Bundle ID verified on this Mac (16.114). Mac uses ⌃ (Control) for several of these, as Microsoft lists them.",
+    "actions": [
+      {
+        "id": "excel.save",
+        "title": "Save",
+        "mac": "⌘S",
+        "windows": "Ctrl+S",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/excel/keyboard-shortcuts-in-excel"
+      },
+      {
+        "id": "excel.autoSum",
+        "title": "AutoSum",
+        "mac": "⇧⌘T",
+        "windows": "Alt+=",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/excel/keyboard-shortcuts-in-excel"
+      },
+      {
+        "id": "excel.filter",
+        "title": "Filter On / Off",
+        "mac": "⇧⌘F",
+        "windows": null,
+        "notes": "Mac only on Microsoft's page. Ctrl+Shift+L for Windows is widely quoted but isn't on Microsoft's current page.",
+        "source": "https://support.microsoft.com/en-us/accessibility/excel/keyboard-shortcuts-in-excel"
+      },
+      {
+        "id": "excel.formatCells",
+        "title": "Format Cells",
+        "mac": "⌘1",
+        "windows": "Ctrl+1",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/excel/keyboard-shortcuts-in-excel"
+      },
+      {
+        "id": "excel.fillDown",
+        "title": "Fill Down",
+        "mac": "⌃D",
+        "windows": "Ctrl+D",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/excel/keyboard-shortcuts-in-excel"
+      },
+      {
+        "id": "excel.insertCells",
+        "title": "Insert Cells",
+        "mac": "⌃⇧=",
+        "windows": "Ctrl+Shift+Plus (+)",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/excel/keyboard-shortcuts-in-excel"
+      },
+      {
+        "id": "excel.deleteCells",
+        "title": "Delete Cells",
+        "mac": "⌘-",
+        "windows": "Ctrl+Minus (-)",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/excel/keyboard-shortcuts-in-excel"
+      },
+      {
+        "id": "excel.note",
+        "title": "New Note",
+        "mac": "⇧F2",
+        "windows": "Shift+F2",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/excel/keyboard-shortcuts-in-excel"
+      },
+      {
+        "id": "excel.comment",
+        "title": "New Threaded Comment",
+        "mac": "⇧⌘F2",
+        "windows": "Ctrl+Shift+F2",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/excel/keyboard-shortcuts-in-excel"
+      },
+      {
+        "id": "excel.pasteSpecial",
+        "title": "Paste Special",
+        "mac": "⌃⌘V",
+        "windows": "Ctrl+Alt+V",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/excel/keyboard-shortcuts-in-excel"
+      },
+      {
+        "id": "excel.calculate",
+        "title": "Calculate Now",
+        "mac": "⌘=",
+        "windows": "F9",
+        "notes": "Mac: calculate all open workbooks.",
+        "source": "https://support.microsoft.com/en-us/accessibility/excel/keyboard-shortcuts-in-excel"
+      },
+      {
+        "id": "excel.date",
+        "title": "Insert Current Date",
+        "mac": null,
+        "windows": "Ctrl+;",
+        "notes": "No Mac shortcut on Microsoft's current page.",
+        "source": "https://support.microsoft.com/en-us/accessibility/excel/keyboard-shortcuts-in-excel"
+      },
+      {
+        "id": "excel.time",
+        "title": "Insert Current Time",
+        "mac": null,
+        "windows": "Ctrl+Shift+:",
+        "notes": "No Mac shortcut on Microsoft's current page.",
+        "source": "https://support.microsoft.com/en-us/accessibility/excel/keyboard-shortcuts-in-excel"
+      }
+    ]
+  },
+  {
+    "app": "Microsoft PowerPoint",
+    "macBundleIDs": [
+      "com.microsoft.Powerpoint"
+    ],
+    "windowsProcess": "POWERPNT.EXE",
+    "notes": "Bundle ID verified on this Mac (16.114; note the lowercase 'p'). Slide-show keys only work while the show is running.",
+    "actions": [
+      {
+        "id": "ppt.playFromStart",
+        "title": "Play from Start",
+        "mac": "⇧⌘Return",
+        "windows": "F5",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/powerpoint/use-keyboard-shortcuts-to-deliver-powerpoint-presentations"
+      },
+      {
+        "id": "ppt.playFromCurrent",
+        "title": "Play from Current Slide",
+        "mac": "⌘Return",
+        "windows": "Shift+F5",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/powerpoint/use-keyboard-shortcuts-to-deliver-powerpoint-presentations"
+      },
+      {
+        "id": "ppt.presenterView",
+        "title": "Presenter View",
+        "mac": "⌥Return",
+        "windows": "Alt+F5",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/powerpoint/use-keyboard-shortcuts-to-deliver-powerpoint-presentations"
+      },
+      {
+        "id": "ppt.next",
+        "title": "Next Slide",
+        "mac": "→",
+        "windows": "→ (or N, Space, Page Down)",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/powerpoint/use-keyboard-shortcuts-to-deliver-powerpoint-presentations"
+      },
+      {
+        "id": "ppt.previous",
+        "title": "Previous Slide",
+        "mac": "←",
+        "windows": "← (or P, Page Up)",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/powerpoint/use-keyboard-shortcuts-to-deliver-powerpoint-presentations"
+      },
+      {
+        "id": "ppt.black",
+        "title": "Black Screen",
+        "mac": "B",
+        "windows": "B",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/powerpoint/use-keyboard-shortcuts-to-deliver-powerpoint-presentations"
+      },
+      {
+        "id": "ppt.white",
+        "title": "White Screen",
+        "mac": "W",
+        "windows": "W",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/powerpoint/use-keyboard-shortcuts-to-deliver-powerpoint-presentations"
+      },
+      {
+        "id": "ppt.laser",
+        "title": "Laser Pointer",
+        "mac": "⌘L",
+        "windows": "Ctrl+L",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/powerpoint/use-keyboard-shortcuts-to-deliver-powerpoint-presentations"
+      },
+      {
+        "id": "ppt.end",
+        "title": "End Slide Show",
+        "mac": "Esc",
+        "windows": "Esc",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/powerpoint/use-keyboard-shortcuts-to-deliver-powerpoint-presentations"
+      },
+      {
+        "id": "ppt.newSlide",
+        "title": "New Slide",
+        "mac": "⇧⌘N",
+        "windows": "Ctrl+M",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/powerpoint/use-keyboard-shortcuts-to-create-powerpoint-presentations"
+      },
+      {
+        "id": "ppt.comment",
+        "title": "New Comment",
+        "mac": "⇧⌘M",
+        "windows": "Ctrl+Alt+M",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/powerpoint/use-keyboard-shortcuts-to-create-powerpoint-presentations"
+      },
+      {
+        "id": "ppt.save",
+        "title": "Save",
+        "mac": "⌘S",
+        "windows": "Ctrl+S",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/accessibility/powerpoint/use-keyboard-shortcuts-to-create-powerpoint-presentations"
+      }
+    ]
+  },
+  {
+    "app": "Keynote",
+    "macBundleIDs": [
+      "com.apple.iWork.Keynote"
+    ],
+    "windowsProcess": null,
+    "notes": "Bundle ID verified on this Mac (14.5). Mac only. Presenter keys (arrows, B, W, Esc) work while the presentation is playing.",
+    "actions": [
+      {
+        "id": "keynote.play",
+        "title": "Play Slideshow",
+        "mac": "⌥⌘P",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/keynote/keyboard-shortcuts-tanfde4a3e6d/mac"
+      },
+      {
+        "id": "keynote.next",
+        "title": "Next Slide / Build",
+        "mac": "→",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/keynote/keyboard-shortcuts-tanfde4a3e6d/mac"
+      },
+      {
+        "id": "keynote.previous",
+        "title": "Previous Slide",
+        "mac": "←",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/keynote/keyboard-shortcuts-tanfde4a3e6d/mac"
+      },
+      {
+        "id": "keynote.notes",
+        "title": "Show / Hide Presenter Notes",
+        "mac": "⇧⌘P",
+        "windows": null,
+        "notes": "While playing.",
+        "source": "https://support.apple.com/guide/keynote/keyboard-shortcuts-tanfde4a3e6d/mac"
+      },
+      {
+        "id": "keynote.black",
+        "title": "Black Screen",
+        "mac": "B",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/keynote/keyboard-shortcuts-tanfde4a3e6d/mac"
+      },
+      {
+        "id": "keynote.white",
+        "title": "White Screen",
+        "mac": "W",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/keynote/keyboard-shortcuts-tanfde4a3e6d/mac"
+      },
+      {
+        "id": "keynote.stop",
+        "title": "Quit Presentation",
+        "mac": "Esc",
+        "windows": null,
+        "notes": "Esc or Q.",
+        "source": "https://support.apple.com/guide/keynote/keyboard-shortcuts-tanfde4a3e6d/mac"
+      },
+      {
+        "id": "keynote.newSlide",
+        "title": "New Slide",
+        "mac": "⇧⌘N",
+        "windows": null,
+        "notes": "In the slide navigator.",
+        "source": "https://support.apple.com/guide/keynote/keyboard-shortcuts-tanfde4a3e6d/mac"
+      },
+      {
+        "id": "keynote.skip",
+        "title": "Skip / Unskip Slide",
+        "mac": "⇧⌘H",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/keynote/keyboard-shortcuts-tanfde4a3e6d/mac"
+      },
+      {
+        "id": "keynote.save",
+        "title": "Save",
+        "mac": "⌘S",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/keynote/keyboard-shortcuts-tanfde4a3e6d/mac"
+      }
+    ]
+  },
+  {
+    "app": "Notion",
+    "macBundleIDs": [
+      "notion.id"
+    ],
+    "windowsProcess": "Notion.exe",
+    "notes": "Bundle ID verified on this Mac (7.12). Notion writes 'cmd/ctrl': Command on Mac, Control on Windows. Listed for English/QWERTY keyboards.",
+    "actions": [
+      {
+        "id": "notion.search",
+        "title": "Search",
+        "mac": "⌘P",
+        "windows": "Ctrl+P",
+        "notes": "⌘K also opens search.",
+        "source": "https://www.notion.com/help/keyboard-shortcuts"
+      },
+      {
+        "id": "notion.newPage",
+        "title": "New Page",
+        "mac": "⌘N",
+        "windows": "Ctrl+N",
+        "notes": "Desktop app.",
+        "source": "https://www.notion.com/help/keyboard-shortcuts"
+      },
+      {
+        "id": "notion.newTab",
+        "title": "New Tab",
+        "mac": "⌘T",
+        "windows": "Ctrl+T",
+        "notes": "Desktop app.",
+        "source": "https://www.notion.com/help/keyboard-shortcuts"
+      },
+      {
+        "id": "notion.newWindow",
+        "title": "New Window",
+        "mac": "⇧⌘N",
+        "windows": "Ctrl+Shift+N",
+        "notes": "Desktop app.",
+        "source": "https://www.notion.com/help/keyboard-shortcuts"
+      },
+      {
+        "id": "notion.copyLink",
+        "title": "Copy Page Link",
+        "mac": "⌘L",
+        "windows": "Ctrl+L",
+        "notes": null,
+        "source": "https://www.notion.com/help/keyboard-shortcuts"
+      },
+      {
+        "id": "notion.back",
+        "title": "Back",
+        "mac": "⌘[",
+        "windows": "Ctrl+[",
+        "notes": null,
+        "source": "https://www.notion.com/help/keyboard-shortcuts"
+      },
+      {
+        "id": "notion.forward",
+        "title": "Forward",
+        "mac": "⌘]",
+        "windows": "Ctrl+]",
+        "notes": null,
+        "source": "https://www.notion.com/help/keyboard-shortcuts"
+      },
+      {
+        "id": "notion.darkMode",
+        "title": "Dark / Light Mode",
+        "mac": "⇧⌘L",
+        "windows": "Ctrl+Shift+L",
+        "notes": null,
+        "source": "https://www.notion.com/help/keyboard-shortcuts"
+      },
+      {
+        "id": "notion.comment",
+        "title": "New Comment",
+        "mac": "⇧⌘M",
+        "windows": "Ctrl+Shift+M",
+        "notes": null,
+        "source": "https://www.notion.com/help/keyboard-shortcuts"
+      }
+    ]
+  },
+  {
+    "app": "Figma",
+    "macBundleIDs": [
+      "com.figma.Desktop"
+    ],
+    "windowsProcess": "Figma.exe",
+    "notes": "Bundle ID verified on this Mac (126.10). Figma has no single shortcut page; each entry cites the help article that documents it. Figma remaps some shortcuts for non-US keyboard layouts.",
+    "actions": [
+      {
+        "id": "figma.actions",
+        "title": "Actions Menu",
+        "mac": "⌘K",
+        "windows": "Ctrl+K",
+        "notes": null,
+        "source": "https://help.figma.com/hc/en-us/articles/23570416033943-Use-the-actions-menu-in-Figma-Design"
+      },
+      {
+        "id": "figma.createComponent",
+        "title": "Create Component",
+        "mac": "⌥⌘K",
+        "windows": "Ctrl+Alt+K",
+        "notes": null,
+        "source": "https://help.figma.com/hc/en-us/articles/360038663154-Create-components-to-reuse-in-designs"
+      },
+      {
+        "id": "figma.frameSelection",
+        "title": "Frame Selection",
+        "mac": "⌥⌘G",
+        "windows": "Ctrl+Alt+G",
+        "notes": null,
+        "source": "https://help.figma.com/hc/en-us/articles/360041539473-Frames-in-Figma-Design"
+      },
+      {
+        "id": "figma.ungroup",
+        "title": "Ungroup / Unframe",
+        "mac": "⇧⌘G",
+        "windows": "Ctrl+Shift+G",
+        "notes": null,
+        "source": "https://help.figma.com/hc/en-us/articles/360041539473-Frames-in-Figma-Design"
+      },
+      {
+        "id": "figma.duplicate",
+        "title": "Duplicate",
+        "mac": "⌘D",
+        "windows": "Ctrl+D",
+        "notes": null,
+        "source": "https://help.figma.com/hc/en-us/articles/360041539473-Frames-in-Figma-Design"
+      },
+      {
+        "id": "figma.resizeToFit",
+        "title": "Resize Frame to Fit",
+        "mac": "⌥⇧⌘R",
+        "windows": "Ctrl+Alt+Shift+R",
+        "notes": null,
+        "source": "https://help.figma.com/hc/en-us/articles/360041539473-Frames-in-Figma-Design"
+      },
+      {
+        "id": "figma.autoLayout",
+        "title": "Add Auto Layout",
+        "mac": "⇧A",
+        "windows": "Shift+A",
+        "notes": null,
+        "source": "https://help.figma.com/hc/en-us/articles/360040451373-Guide-to-auto-layout-in-Figma"
+      },
+      {
+        "id": "figma.removeAutoLayout",
+        "title": "Remove Auto Layout",
+        "mac": "⌥⇧A",
+        "windows": "Alt+Shift+A",
+        "notes": null,
+        "source": "https://help.figma.com/hc/en-us/articles/360040451373-Guide-to-auto-layout-in-Figma"
+      },
+      {
+        "id": "figma.export",
+        "title": "Export",
+        "mac": "⇧⌘E",
+        "windows": "Ctrl+Shift+E",
+        "notes": null,
+        "source": "https://help.figma.com/hc/en-us/articles/360040028114-Export-static-designs-from-Figma"
+      },
+      {
+        "id": "figma.shortcuts",
+        "title": "Keyboard Shortcuts Panel",
+        "mac": "⌃⇧/",
+        "windows": "Ctrl+Shift+?",
+        "notes": "Figma writes Control Shift ?; on a US keyboard ? is Shift-/.",
+        "source": "https://help.figma.com/hc/en-us/articles/360040328653-Use-Figma-products-with-a-keyboard"
+      }
+    ]
+  },
+  {
+    "app": "Adobe Photoshop",
+    "macBundleIDs": [
+      "com.adobe.Photoshop"
+    ],
+    "windowsProcess": "Photoshop.exe",
+    "notes": "com.adobe.Photoshop is the documented identifier (not installed here). Adobe's current page (updated Sep 2026) only says to open Edit > Keyboard Shortcuts (⌥⇧⌘K); the full default list is Adobe's shortcut PDF (dated Jul 2022), still hosted on helpx.adobe.com. Defaults can be customized in Photoshop.",
+    "actions": [
+      {
+        "id": "ps.brush",
+        "title": "Brush Tool",
+        "mac": "B",
+        "windows": "B",
+        "notes": null,
+        "source": "https://helpx.adobe.com/content/dam/help/en/photoshop/using/default-keyboard-shortcuts/photoshop-keyboard-shortcuts.pdf"
+      },
+      {
+        "id": "ps.eraser",
+        "title": "Eraser Tool",
+        "mac": "E",
+        "windows": "E",
+        "notes": null,
+        "source": "https://helpx.adobe.com/content/dam/help/en/photoshop/using/default-keyboard-shortcuts/photoshop-keyboard-shortcuts.pdf"
+      },
+      {
+        "id": "ps.move",
+        "title": "Move Tool",
+        "mac": "V",
+        "windows": "V",
+        "notes": null,
+        "source": "https://helpx.adobe.com/content/dam/help/en/photoshop/using/default-keyboard-shortcuts/photoshop-keyboard-shortcuts.pdf"
+      },
+      {
+        "id": "ps.freeTransform",
+        "title": "Free Transform",
+        "mac": "⌘T",
+        "windows": "Ctrl+T",
+        "notes": null,
+        "source": "https://helpx.adobe.com/content/dam/help/en/photoshop/using/default-keyboard-shortcuts/photoshop-keyboard-shortcuts.pdf"
+      },
+      {
+        "id": "ps.deselect",
+        "title": "Deselect",
+        "mac": "⌘D",
+        "windows": "Ctrl+D",
+        "notes": null,
+        "source": "https://helpx.adobe.com/content/dam/help/en/photoshop/using/default-keyboard-shortcuts/photoshop-keyboard-shortcuts.pdf"
+      },
+      {
+        "id": "ps.inverse",
+        "title": "Inverse Selection",
+        "mac": "⇧F7",
+        "windows": "Shift+F7",
+        "notes": null,
+        "source": "https://helpx.adobe.com/content/dam/help/en/photoshop/using/default-keyboard-shortcuts/photoshop-keyboard-shortcuts.pdf"
+      },
+      {
+        "id": "ps.newLayer",
+        "title": "New Layer",
+        "mac": "⇧⌘N",
+        "windows": "Ctrl+Shift+N",
+        "notes": null,
+        "source": "https://helpx.adobe.com/content/dam/help/en/photoshop/using/default-keyboard-shortcuts/photoshop-keyboard-shortcuts.pdf"
+      },
+      {
+        "id": "ps.layerViaCopy",
+        "title": "New Layer via Copy",
+        "mac": "⌘J",
+        "windows": "Ctrl+J",
+        "notes": null,
+        "source": "https://helpx.adobe.com/content/dam/help/en/photoshop/using/default-keyboard-shortcuts/photoshop-keyboard-shortcuts.pdf"
+      },
+      {
+        "id": "ps.mergeVisible",
+        "title": "Merge Visible",
+        "mac": "⇧⌘E",
+        "windows": "Ctrl+Shift+E",
+        "notes": null,
+        "source": "https://helpx.adobe.com/content/dam/help/en/photoshop/using/default-keyboard-shortcuts/photoshop-keyboard-shortcuts.pdf"
+      },
+      {
+        "id": "ps.group",
+        "title": "Group Layers",
+        "mac": "⌘G",
+        "windows": "Ctrl+G",
+        "notes": null,
+        "source": "https://helpx.adobe.com/content/dam/help/en/photoshop/using/default-keyboard-shortcuts/photoshop-keyboard-shortcuts.pdf"
+      },
+      {
+        "id": "ps.swapColors",
+        "title": "Swap Colors",
+        "mac": "X",
+        "windows": "X",
+        "notes": null,
+        "source": "https://helpx.adobe.com/content/dam/help/en/photoshop/using/default-keyboard-shortcuts/photoshop-keyboard-shortcuts.pdf"
+      },
+      {
+        "id": "ps.undo",
+        "title": "Undo",
+        "mac": "⌘Z",
+        "windows": "Ctrl+Z",
+        "notes": null,
+        "source": "https://helpx.adobe.com/content/dam/help/en/photoshop/using/default-keyboard-shortcuts/photoshop-keyboard-shortcuts.pdf"
+      },
+      {
+        "id": "ps.brushSize",
+        "title": "Smaller Brush",
+        "mac": "[",
+        "windows": "[",
+        "notes": "The PDF lists [ for smaller; the larger-brush key didn't come through when the PDF was read, so neither is a preset.",
+        "source": "https://helpx.adobe.com/content/dam/help/en/photoshop/using/default-keyboard-shortcuts/photoshop-keyboard-shortcuts.pdf"
+      }
+    ]
+  },
+  {
+    "app": "Adobe Lightroom Classic",
+    "macBundleIDs": [
+      "com.adobe.LightroomClassicCC7"
+    ],
+    "windowsProcess": "Lightroom.exe",
+    "notes": "com.adobe.LightroomClassicCC7 is the documented identifier (not installed here). Page last updated Oct 29, 2025.",
+    "actions": [
+      {
+        "id": "lrc.library",
+        "title": "Library Module",
+        "mac": "⌥⌘1",
+        "windows": "Ctrl+Alt+1",
+        "notes": null,
+        "source": "https://helpx.adobe.com/lightroom-classic/desktop/introduction-to-lightroom-classic/keyboard-shortcuts.html"
+      },
+      {
+        "id": "lrc.develop",
+        "title": "Develop Module",
+        "mac": "⌥⌘2",
+        "windows": "Ctrl+Alt+2",
+        "notes": null,
+        "source": "https://helpx.adobe.com/lightroom-classic/desktop/introduction-to-lightroom-classic/keyboard-shortcuts.html"
+      },
+      {
+        "id": "lrc.pick",
+        "title": "Flag as Pick",
+        "mac": "P",
+        "windows": "P",
+        "notes": null,
+        "source": "https://helpx.adobe.com/lightroom-classic/desktop/introduction-to-lightroom-classic/keyboard-shortcuts.html"
+      },
+      {
+        "id": "lrc.reject",
+        "title": "Flag as Reject",
+        "mac": "X",
+        "windows": "X",
+        "notes": null,
+        "source": "https://helpx.adobe.com/lightroom-classic/desktop/introduction-to-lightroom-classic/keyboard-shortcuts.html"
+      },
+      {
+        "id": "lrc.unflag",
+        "title": "Unflag",
+        "mac": "U",
+        "windows": "U",
+        "notes": null,
+        "source": "https://helpx.adobe.com/lightroom-classic/desktop/introduction-to-lightroom-classic/keyboard-shortcuts.html"
+      },
+      {
+        "id": "lrc.beforeAfter",
+        "title": "Before / After",
+        "mac": "Y",
+        "windows": "Y",
+        "notes": "Develop: left/right view.",
+        "source": "https://helpx.adobe.com/lightroom-classic/desktop/introduction-to-lightroom-classic/keyboard-shortcuts.html"
+      },
+      {
+        "id": "lrc.autoTone",
+        "title": "Auto Tone",
+        "mac": "⌘U",
+        "windows": "Ctrl+U",
+        "notes": null,
+        "source": "https://helpx.adobe.com/lightroom-classic/desktop/introduction-to-lightroom-classic/keyboard-shortcuts.html"
+      },
+      {
+        "id": "lrc.copySettings",
+        "title": "Copy Develop Settings",
+        "mac": "⇧⌘C",
+        "windows": "Ctrl+Shift+C",
+        "notes": null,
+        "source": "https://helpx.adobe.com/lightroom-classic/desktop/introduction-to-lightroom-classic/keyboard-shortcuts.html"
+      },
+      {
+        "id": "lrc.pasteSettings",
+        "title": "Paste Develop Settings",
+        "mac": "⇧⌘V",
+        "windows": "Ctrl+Shift+V",
+        "notes": null,
+        "source": "https://helpx.adobe.com/lightroom-classic/desktop/introduction-to-lightroom-classic/keyboard-shortcuts.html"
+      },
+      {
+        "id": "lrc.virtualCopy",
+        "title": "Create Virtual Copy",
+        "mac": "⌘'",
+        "windows": "Ctrl+'",
+        "notes": null,
+        "source": "https://helpx.adobe.com/lightroom-classic/desktop/introduction-to-lightroom-classic/keyboard-shortcuts.html"
+      },
+      {
+        "id": "lrc.crop",
+        "title": "Crop Tool",
+        "mac": "R",
+        "windows": "R",
+        "notes": null,
+        "source": "https://helpx.adobe.com/lightroom-classic/desktop/introduction-to-lightroom-classic/keyboard-shortcuts.html"
+      },
+      {
+        "id": "lrc.export",
+        "title": "Export",
+        "mac": "⇧⌘E",
+        "windows": "Ctrl+Shift+E",
+        "notes": null,
+        "source": "https://helpx.adobe.com/lightroom-classic/desktop/introduction-to-lightroom-classic/keyboard-shortcuts.html"
+      }
+    ]
+  },
+  {
+    "app": "Adobe Premiere Pro",
+    "macBundleIDs": [
+      "com.adobe.PremierePro.26",
+      "com.adobe.PremierePro.25",
+      "com.adobe.PremierePro.24"
+    ],
+    "windowsProcess": "Adobe Premiere Pro.exe",
+    "notes": "Not installed here. Adobe puts the release year in the identifier (com.adobe.PremierePro.24 = 2024, .25 = 2025); .26 for the 2026 release is inferred from that pattern. Adobe now calls the app 'Premiere'; page last updated Jan 7, 2026. Shortcuts are panel-specific (most of these need the Timeline focused).",
+    "actions": [
+      {
+        "id": "pr.playStop",
+        "title": "Play / Stop",
+        "mac": "Space",
+        "windows": "Space",
+        "notes": null,
+        "source": "https://helpx.adobe.com/premiere/desktop/get-started/keyboard-shortcuts/default-keyboard-shortcuts.html"
+      },
+      {
+        "id": "pr.addEdit",
+        "title": "Add Edit (Cut at Playhead)",
+        "mac": "⌘K",
+        "windows": "Ctrl+K",
+        "notes": null,
+        "source": "https://helpx.adobe.com/premiere/desktop/get-started/keyboard-shortcuts/default-keyboard-shortcuts.html"
+      },
+      {
+        "id": "pr.rippleDelete",
+        "title": "Ripple Delete",
+        "mac": "⌥Delete",
+        "windows": "Alt+Backspace",
+        "notes": "Timeline panel entry. The Edit menu lists Shift+Forward Delete (Mac) / Shift+Delete (Windows), which a ring preset can't send on Mac.",
+        "source": "https://helpx.adobe.com/premiere/desktop/get-started/keyboard-shortcuts/default-keyboard-shortcuts.html"
+      },
+      {
+        "id": "pr.markIn",
+        "title": "Mark In",
+        "mac": "I",
+        "windows": "I",
+        "notes": null,
+        "source": "https://helpx.adobe.com/premiere/desktop/get-started/keyboard-shortcuts/default-keyboard-shortcuts.html"
+      },
+      {
+        "id": "pr.markOut",
+        "title": "Mark Out",
+        "mac": "O",
+        "windows": "O",
+        "notes": null,
+        "source": "https://helpx.adobe.com/premiere/desktop/get-started/keyboard-shortcuts/default-keyboard-shortcuts.html"
+      },
+      {
+        "id": "pr.marker",
+        "title": "Add Marker",
+        "mac": "M",
+        "windows": "M",
+        "notes": null,
+        "source": "https://helpx.adobe.com/premiere/desktop/get-started/keyboard-shortcuts/default-keyboard-shortcuts.html"
+      },
+      {
+        "id": "pr.snap",
+        "title": "Snap On / Off",
+        "mac": "S",
+        "windows": "S",
+        "notes": null,
+        "source": "https://helpx.adobe.com/premiere/desktop/get-started/keyboard-shortcuts/default-keyboard-shortcuts.html"
+      },
+      {
+        "id": "pr.transition",
+        "title": "Apply Video Transition",
+        "mac": "⌘D",
+        "windows": "Ctrl+D",
+        "notes": null,
+        "source": "https://helpx.adobe.com/premiere/desktop/get-started/keyboard-shortcuts/default-keyboard-shortcuts.html"
+      },
+      {
+        "id": "pr.export",
+        "title": "Export Media",
+        "mac": "⌘M",
+        "windows": "Ctrl+M",
+        "notes": null,
+        "source": "https://helpx.adobe.com/premiere/desktop/get-started/keyboard-shortcuts/default-keyboard-shortcuts.html"
+      },
+      {
+        "id": "pr.undo",
+        "title": "Undo",
+        "mac": "⌘Z",
+        "windows": "Ctrl+Z",
+        "notes": null,
+        "source": "https://helpx.adobe.com/premiere/desktop/get-started/keyboard-shortcuts/default-keyboard-shortcuts.html"
+      },
+      {
+        "id": "pr.redo",
+        "title": "Redo",
+        "mac": "⇧⌘Z",
+        "windows": "Ctrl+Shift+Z",
+        "notes": null,
+        "source": "https://helpx.adobe.com/premiere/desktop/get-started/keyboard-shortcuts/default-keyboard-shortcuts.html"
+      },
+      {
+        "id": "pr.save",
+        "title": "Save",
+        "mac": "⌘S",
+        "windows": "Ctrl+S",
+        "notes": null,
+        "source": "https://helpx.adobe.com/premiere/desktop/get-started/keyboard-shortcuts/default-keyboard-shortcuts.html"
+      }
+    ]
+  },
+  {
+    "app": "Final Cut Pro",
+    "macBundleIDs": [
+      "com.apple.FinalCut"
+    ],
+    "windowsProcess": null,
+    "notes": "com.apple.FinalCut is the documented identifier (not installed here). Mac only. Guide covers Final Cut Pro for Mac 12.x. Shortcuts can be changed in the Command Editor.",
+    "actions": [
+      {
+        "id": "fcp.playPause",
+        "title": "Play / Pause",
+        "mac": "Space",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/final-cut-pro/keyboard-shortcuts-ver90ba5929/mac"
+      },
+      {
+        "id": "fcp.blade",
+        "title": "Blade (Cut at Playhead)",
+        "mac": "⌘B",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/final-cut-pro/keyboard-shortcuts-ver90ba5929/mac"
+      },
+      {
+        "id": "fcp.bladeAll",
+        "title": "Blade All",
+        "mac": "⇧⌘B",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/final-cut-pro/keyboard-shortcuts-ver90ba5929/mac"
+      },
+      {
+        "id": "fcp.marker",
+        "title": "Add Marker",
+        "mac": "M",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/final-cut-pro/keyboard-shortcuts-ver90ba5929/mac"
+      },
+      {
+        "id": "fcp.rangeStart",
+        "title": "Set Range Start",
+        "mac": "I",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/final-cut-pro/keyboard-shortcuts-ver90ba5929/mac"
+      },
+      {
+        "id": "fcp.rangeEnd",
+        "title": "Set Range End",
+        "mac": "O",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/final-cut-pro/keyboard-shortcuts-ver90ba5929/mac"
+      },
+      {
+        "id": "fcp.snapping",
+        "title": "Snapping On / Off",
+        "mac": "N",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/final-cut-pro/keyboard-shortcuts-ver90ba5929/mac"
+      },
+      {
+        "id": "fcp.skimming",
+        "title": "Skimming On / Off",
+        "mac": "S",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/final-cut-pro/keyboard-shortcuts-ver90ba5929/mac"
+      },
+      {
+        "id": "fcp.zoomToFit",
+        "title": "Zoom to Fit",
+        "mac": "⇧Z",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/final-cut-pro/keyboard-shortcuts-ver90ba5929/mac"
+      },
+      {
+        "id": "fcp.undo",
+        "title": "Undo",
+        "mac": "⌘Z",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/final-cut-pro/keyboard-shortcuts-ver90ba5929/mac"
+      },
+      {
+        "id": "fcp.share",
+        "title": "Share to Default Destination",
+        "mac": "⌘E",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/final-cut-pro/keyboard-shortcuts-ver90ba5929/mac"
+      },
+      {
+        "id": "fcp.import",
+        "title": "Import Media",
+        "mac": "⌘I",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/final-cut-pro/keyboard-shortcuts-ver90ba5929/mac"
+      }
+    ]
+  },
+  {
+    "app": "DaVinci Resolve",
+    "macBundleIDs": [
+      "com.blackmagic-design.DaVinciResolve"
+    ],
+    "windowsProcess": "Resolve.exe",
+    "notes": "Bundle ID verified on this Mac (21.0.2). Caveat: the only standalone shortcut list Blackmagic publishes is its 'DaVinci Resolve 11 Menus & Keyboard Shortcuts' guide (now hosted as DaVinci-Resolve-15-Keyboard-Shortcuts.pdf). The current Resolve 20/21 Reference Manual (209 MB) wasn't downloaded. Only long-standing keys are included (JKL, I/O, M, ⌘B, B, N, ⇧Z, ⌘Z, ⌘S). Check DaVinci Resolve > Keyboard Customization before relying on them. The guide says Windows uses Control instead of Command and Alt instead of Option. Shortcuts are page-specific (Edit page).",
+    "actions": [
+      {
+        "id": "resolve.playReverse",
+        "title": "Play Reverse",
+        "mac": "J",
+        "windows": "J",
+        "notes": null,
+        "source": "https://documents.blackmagicdesign.com/UserManuals/DaVinci-Resolve-15-Keyboard-Shortcuts.pdf"
+      },
+      {
+        "id": "resolve.stop",
+        "title": "Stop",
+        "mac": "K",
+        "windows": "K",
+        "notes": null,
+        "source": "https://documents.blackmagicdesign.com/UserManuals/DaVinci-Resolve-15-Keyboard-Shortcuts.pdf"
+      },
+      {
+        "id": "resolve.playForward",
+        "title": "Play Forward",
+        "mac": "L",
+        "windows": "L",
+        "notes": null,
+        "source": "https://documents.blackmagicdesign.com/UserManuals/DaVinci-Resolve-15-Keyboard-Shortcuts.pdf"
+      },
+      {
+        "id": "resolve.markIn",
+        "title": "Mark In",
+        "mac": "I",
+        "windows": "I",
+        "notes": null,
+        "source": "https://documents.blackmagicdesign.com/UserManuals/DaVinci-Resolve-15-Keyboard-Shortcuts.pdf"
+      },
+      {
+        "id": "resolve.markOut",
+        "title": "Mark Out",
+        "mac": "O",
+        "windows": "O",
+        "notes": null,
+        "source": "https://documents.blackmagicdesign.com/UserManuals/DaVinci-Resolve-15-Keyboard-Shortcuts.pdf"
+      },
+      {
+        "id": "resolve.marker",
+        "title": "Add Marker",
+        "mac": "M",
+        "windows": "M",
+        "notes": null,
+        "source": "https://documents.blackmagicdesign.com/UserManuals/DaVinci-Resolve-15-Keyboard-Shortcuts.pdf"
+      },
+      {
+        "id": "resolve.razor",
+        "title": "Razor (Cut at Playhead)",
+        "mac": "⌘B",
+        "windows": "Ctrl+B",
+        "notes": null,
+        "source": "https://documents.blackmagicdesign.com/UserManuals/DaVinci-Resolve-15-Keyboard-Shortcuts.pdf"
+      },
+      {
+        "id": "resolve.blade",
+        "title": "Blade Edit Mode",
+        "mac": "B",
+        "windows": "B",
+        "notes": null,
+        "source": "https://documents.blackmagicdesign.com/UserManuals/DaVinci-Resolve-15-Keyboard-Shortcuts.pdf"
+      },
+      {
+        "id": "resolve.snapping",
+        "title": "Snapping On / Off",
+        "mac": "N",
+        "windows": "N",
+        "notes": null,
+        "source": "https://documents.blackmagicdesign.com/UserManuals/DaVinci-Resolve-15-Keyboard-Shortcuts.pdf"
+      },
+      {
+        "id": "resolve.zoomToFit",
+        "title": "Zoom to Fit",
+        "mac": "⇧Z",
+        "windows": "Shift+Z",
+        "notes": null,
+        "source": "https://documents.blackmagicdesign.com/UserManuals/DaVinci-Resolve-15-Keyboard-Shortcuts.pdf"
+      },
+      {
+        "id": "resolve.undo",
+        "title": "Undo",
+        "mac": "⌘Z",
+        "windows": "Ctrl+Z",
+        "notes": null,
+        "source": "https://documents.blackmagicdesign.com/UserManuals/DaVinci-Resolve-15-Keyboard-Shortcuts.pdf"
+      },
+      {
+        "id": "resolve.save",
+        "title": "Save Project",
+        "mac": "⌘S",
+        "windows": "Ctrl+S",
+        "notes": null,
+        "source": "https://documents.blackmagicdesign.com/UserManuals/DaVinci-Resolve-15-Keyboard-Shortcuts.pdf"
+      },
+      {
+        "id": "resolve.splitClip",
+        "title": "Split Clip",
+        "mac": "⌘\\",
+        "windows": "Ctrl+\\",
+        "notes": null,
+        "source": "https://documents.blackmagicdesign.com/UserManuals/DaVinci-Resolve-15-Keyboard-Shortcuts.pdf"
+      }
+    ]
+  },
+  {
+    "app": "Visual Studio Code",
+    "macBundleIDs": [
+      "com.microsoft.VSCode"
+    ],
+    "windowsProcess": "Code.exe",
+    "notes": "Bundle ID verified on this Mac (1.124). Source is VS Code's official keyboard-shortcut reference PDFs (linked from code.visualstudio.com; the PDFs date from 2021, and these defaults are unchanged since). Keybindings are user-customizable (keybindings.json).",
+    "actions": [
+      {
+        "id": "vscode.commandPalette",
+        "title": "Command Palette",
+        "mac": "⇧⌘P",
+        "windows": "Ctrl+Shift+P",
+        "notes": null,
+        "source": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf",
+        "windowsSource": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf"
+      },
+      {
+        "id": "vscode.quickOpen",
+        "title": "Quick Open File",
+        "mac": "⌘P",
+        "windows": "Ctrl+P",
+        "notes": null,
+        "source": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf",
+        "windowsSource": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf"
+      },
+      {
+        "id": "vscode.terminal",
+        "title": "Show Terminal",
+        "mac": "⌃`",
+        "windows": "Ctrl+`",
+        "notes": null,
+        "source": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf",
+        "windowsSource": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf"
+      },
+      {
+        "id": "vscode.sidebar",
+        "title": "Toggle Sidebar",
+        "mac": "⌘B",
+        "windows": "Ctrl+B",
+        "notes": null,
+        "source": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf",
+        "windowsSource": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf"
+      },
+      {
+        "id": "vscode.explorer",
+        "title": "Explorer",
+        "mac": "⇧⌘E",
+        "windows": "Ctrl+Shift+E",
+        "notes": null,
+        "source": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf",
+        "windowsSource": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf"
+      },
+      {
+        "id": "vscode.search",
+        "title": "Search in Files",
+        "mac": "⇧⌘F",
+        "windows": "Ctrl+Shift+F",
+        "notes": null,
+        "source": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf",
+        "windowsSource": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf"
+      },
+      {
+        "id": "vscode.sourceControl",
+        "title": "Source Control",
+        "mac": "⌃⇧G",
+        "windows": "Ctrl+Shift+G",
+        "notes": null,
+        "source": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf",
+        "windowsSource": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf"
+      },
+      {
+        "id": "vscode.format",
+        "title": "Format Document",
+        "mac": "⌥⇧F",
+        "windows": "Shift+Alt+F",
+        "notes": null,
+        "source": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf",
+        "windowsSource": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf"
+      },
+      {
+        "id": "vscode.comment",
+        "title": "Toggle Line Comment",
+        "mac": "⌘/",
+        "windows": "Ctrl+/",
+        "notes": null,
+        "source": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf",
+        "windowsSource": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf"
+      },
+      {
+        "id": "vscode.split",
+        "title": "Split Editor",
+        "mac": "⌘\\",
+        "windows": "Ctrl+\\",
+        "notes": null,
+        "source": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf",
+        "windowsSource": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf"
+      },
+      {
+        "id": "vscode.wordWrap",
+        "title": "Toggle Word Wrap",
+        "mac": "⌥Z",
+        "windows": "Alt+Z",
+        "notes": null,
+        "source": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf",
+        "windowsSource": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf"
+      },
+      {
+        "id": "vscode.debug",
+        "title": "Start / Continue Debugging",
+        "mac": "F5",
+        "windows": "F5",
+        "notes": null,
+        "source": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf",
+        "windowsSource": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf"
+      }
+    ]
+  },
+  {
+    "app": "Xcode",
+    "macBundleIDs": [
+      "com.apple.dt.Xcode"
+    ],
+    "windowsProcess": null,
+    "notes": "com.apple.dt.Xcode is the documented identifier (not installed here). Mac only. Apple has no current shortcut page for Xcode. Sources: WWDC24 'Xcode essentials' (Apple, 2024) and Apple's archived Xcode shortcut reference (old; only entries that match current Xcode are used: that archive also lists Test as ⌘T, which is outdated). All bindings can be changed in Xcode Settings > Key Bindings.",
+    "actions": [
+      {
+        "id": "xcode.build",
+        "title": "Build",
+        "mac": "⌘B",
+        "windows": null,
+        "notes": null,
+        "source": "https://developer.apple.com/library/archive/documentation/IDEs/Conceptual/xcode_help-command_shortcuts/MenuCommands/MenuCommands014.html"
+      },
+      {
+        "id": "xcode.run",
+        "title": "Run",
+        "mac": "⌘R",
+        "windows": null,
+        "notes": null,
+        "source": "https://developer.apple.com/library/archive/documentation/IDEs/Conceptual/xcode_help-command_shortcuts/MenuCommands/MenuCommands014.html"
+      },
+      {
+        "id": "xcode.stop",
+        "title": "Stop",
+        "mac": "⌘.",
+        "windows": null,
+        "notes": null,
+        "source": "https://developer.apple.com/library/archive/documentation/IDEs/Conceptual/xcode_help-command_shortcuts/MenuCommands/MenuCommands014.html"
+      },
+      {
+        "id": "xcode.test",
+        "title": "Test",
+        "mac": "⌘U",
+        "windows": null,
+        "notes": null,
+        "source": "https://developer.apple.com/videos/play/wwdc2024/10181/"
+      },
+      {
+        "id": "xcode.runWithoutBuilding",
+        "title": "Run Without Building",
+        "mac": "⌃⌘R",
+        "windows": null,
+        "notes": null,
+        "source": "https://developer.apple.com/videos/play/wwdc2024/10181/"
+      },
+      {
+        "id": "xcode.clean",
+        "title": "Clean Build Folder",
+        "mac": "⇧⌘K",
+        "windows": null,
+        "notes": "The archived reference calls ⇧⌘K 'Clean'; current Xcode's Product menu names it Clean Build Folder (inferred from current Xcode).",
+        "source": "https://developer.apple.com/library/archive/documentation/IDEs/Conceptual/xcode_help-command_shortcuts/MenuCommands/MenuCommands014.html"
+      },
+      {
+        "id": "xcode.openQuickly",
+        "title": "Open Quickly",
+        "mac": "⇧⌘O",
+        "windows": null,
+        "notes": null,
+        "source": "https://developer.apple.com/videos/play/wwdc2024/10181/"
+      },
+      {
+        "id": "xcode.findNavigator",
+        "title": "Find in Project",
+        "mac": "⇧⌘F",
+        "windows": null,
+        "notes": null,
+        "source": "https://developer.apple.com/videos/play/wwdc2024/10181/"
+      },
+      {
+        "id": "xcode.quickActions",
+        "title": "Quick Actions",
+        "mac": "⇧⌘A",
+        "windows": null,
+        "notes": null,
+        "source": "https://developer.apple.com/videos/play/wwdc2024/10181/"
+      },
+      {
+        "id": "xcode.debugArea",
+        "title": "Show / Hide Debug Area",
+        "mac": "⇧⌘Y",
+        "windows": null,
+        "notes": null,
+        "source": "https://developer.apple.com/library/archive/documentation/IDEs/Conceptual/xcode_help-command_shortcuts/MenuCommands/MenuCommands014.html"
+      },
+      {
+        "id": "xcode.comment",
+        "title": "Comment Selection",
+        "mac": "⌘/",
+        "windows": null,
+        "notes": null,
+        "source": "https://developer.apple.com/library/archive/documentation/IDEs/Conceptual/xcode_help-command_shortcuts/MenuCommands/MenuCommands014.html"
+      }
+    ]
+  },
+  {
+    "app": "Google Chrome",
+    "macBundleIDs": [
+      "com.google.Chrome"
+    ],
+    "windowsProcess": "chrome.exe",
+    "notes": "Bundle ID verified on this Mac (156.0). Google's Mac list doesn't include plain reload (⌘R); it lists ⇧⌘R (reload ignoring cache).",
+    "actions": [
+      {
+        "id": "chrome.newTab",
+        "title": "New Tab",
+        "mac": "⌘T",
+        "windows": "Ctrl+T",
+        "notes": null,
+        "source": "https://support.google.com/chrome/answer/157179?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "id": "chrome.reopenTab",
+        "title": "Reopen Closed Tab",
+        "mac": "⇧⌘T",
+        "windows": "Ctrl+Shift+T",
+        "notes": null,
+        "source": "https://support.google.com/chrome/answer/157179?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "id": "chrome.closeTab",
+        "title": "Close Tab",
+        "mac": "⌘W",
+        "windows": "Ctrl+W",
+        "notes": null,
+        "source": "https://support.google.com/chrome/answer/157179?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "id": "chrome.nextTab",
+        "title": "Next Tab",
+        "mac": "⌥⌘→",
+        "windows": "Ctrl+Tab",
+        "notes": null,
+        "source": "https://support.google.com/chrome/answer/157179?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "id": "chrome.previousTab",
+        "title": "Previous Tab",
+        "mac": "⌥⌘←",
+        "windows": "Ctrl+Shift+Tab",
+        "notes": null,
+        "source": "https://support.google.com/chrome/answer/157179?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "id": "chrome.incognito",
+        "title": "New Incognito Window",
+        "mac": "⇧⌘N",
+        "windows": "Ctrl+Shift+N",
+        "notes": null,
+        "source": "https://support.google.com/chrome/answer/157179?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "id": "chrome.addressBar",
+        "title": "Address Bar",
+        "mac": "⌘L",
+        "windows": "Ctrl+L",
+        "notes": null,
+        "source": "https://support.google.com/chrome/answer/157179?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "id": "chrome.bookmark",
+        "title": "Bookmark Page",
+        "mac": "⌘D",
+        "windows": "Ctrl+D",
+        "notes": null,
+        "source": "https://support.google.com/chrome/answer/157179?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "id": "chrome.history",
+        "title": "History",
+        "mac": "⌘Y",
+        "windows": "Ctrl+H",
+        "notes": null,
+        "source": "https://support.google.com/chrome/answer/157179?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "id": "chrome.downloads",
+        "title": "Downloads",
+        "mac": "⇧⌘J",
+        "windows": "Ctrl+J",
+        "notes": null,
+        "source": "https://support.google.com/chrome/answer/157179?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "id": "chrome.hardReload",
+        "title": "Reload (Ignore Cache)",
+        "mac": "⇧⌘R",
+        "windows": "Ctrl+Shift+R",
+        "notes": null,
+        "source": "https://support.google.com/chrome/answer/157179?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "id": "chrome.devTools",
+        "title": "Developer Tools",
+        "mac": "⌥⌘I",
+        "windows": "Ctrl+Shift+J (or F12)",
+        "notes": null,
+        "source": "https://support.google.com/chrome/answer/157179?hl=en&co=GENIE.Platform%3DDesktop"
+      }
+    ]
+  },
+  {
+    "app": "Safari",
+    "macBundleIDs": [
+      "com.apple.Safari"
+    ],
+    "windowsProcess": null,
+    "notes": "Bundle ID verified on this Mac (27.2). Mac only. Apple's Safari page doesn't list ⌘T or ⌘R, so they're not included.",
+    "actions": [
+      {
+        "id": "safari.tabOverview",
+        "title": "Tab Overview",
+        "mac": "⇧⌘\\",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac"
+      },
+      {
+        "id": "safari.nextTab",
+        "title": "Next Tab",
+        "mac": "⇧⌘]",
+        "windows": null,
+        "notes": "Also ⌃Tab.",
+        "source": "https://support.apple.com/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac"
+      },
+      {
+        "id": "safari.previousTab",
+        "title": "Previous Tab",
+        "mac": "⇧⌘[",
+        "windows": null,
+        "notes": "Also ⌃⇧Tab.",
+        "source": "https://support.apple.com/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac"
+      },
+      {
+        "id": "safari.closeTab",
+        "title": "Close Tab",
+        "mac": "⌘W",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac"
+      },
+      {
+        "id": "safari.reopenTab",
+        "title": "Reopen Last Closed Tab",
+        "mac": "⇧⌘T",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac"
+      },
+      {
+        "id": "safari.searchField",
+        "title": "Smart Search Field",
+        "mac": "⌘L",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac"
+      },
+      {
+        "id": "safari.find",
+        "title": "Find on Page",
+        "mac": "⌘F",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac"
+      },
+      {
+        "id": "safari.back",
+        "title": "Back",
+        "mac": "⌘[",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac"
+      },
+      {
+        "id": "safari.forward",
+        "title": "Forward",
+        "mac": "⌘]",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac"
+      },
+      {
+        "id": "safari.reader",
+        "title": "Reader",
+        "mac": "⇧⌘R",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac"
+      },
+      {
+        "id": "safari.readingList",
+        "title": "Add to Reading List",
+        "mac": "⇧⌘D",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac"
+      },
+      {
+        "id": "safari.home",
+        "title": "Homepage",
+        "mac": "⇧⌘H",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac"
+      }
+    ]
+  },
+  {
+    "app": "Arc",
+    "macBundleIDs": [
+      "company.thebrowser.Browser"
+    ],
+    "windowsProcess": "Arc.exe",
+    "notes": "company.thebrowser.Browser is the documented identifier (not installed here). Arc's own Keyboard Shortcuts article (resources.arc.net/hc/en-us/articles/20595231349911) is no longer online (404 on 2026-10-28). Source is the Wayback Machine copy from 2026-07-25. Arc lets you remap shortcuts in Settings. Arc.exe for Windows is not verified on a Windows PC.",
+    "actions": [
+      {
+        "id": "arc.newTab",
+        "title": "New Tab",
+        "mac": "⌘T",
+        "windows": "Ctrl+T",
+        "notes": null,
+        "source": "https://web.archive.org/web/20260725225600/https://resources.arc.net/hc/en-us/articles/20595231349911-Keyboard-Shortcuts"
+      },
+      {
+        "id": "arc.littleArc",
+        "title": "Little Arc",
+        "mac": "⌥⌘N",
+        "windows": null,
+        "notes": "Mac only.",
+        "source": "https://web.archive.org/web/20260725225600/https://resources.arc.net/hc/en-us/articles/20595231349911-Keyboard-Shortcuts"
+      },
+      {
+        "id": "arc.reopenTab",
+        "title": "Reopen Closed Tab",
+        "mac": "⇧⌘T",
+        "windows": "Ctrl+Shift+T",
+        "notes": null,
+        "source": "https://web.archive.org/web/20260725225600/https://resources.arc.net/hc/en-us/articles/20595231349911-Keyboard-Shortcuts"
+      },
+      {
+        "id": "arc.closeTab",
+        "title": "Close Tab",
+        "mac": "⌘W",
+        "windows": "Ctrl+W",
+        "notes": null,
+        "source": "https://web.archive.org/web/20260725225600/https://resources.arc.net/hc/en-us/articles/20595231349911-Keyboard-Shortcuts"
+      },
+      {
+        "id": "arc.pinTab",
+        "title": "Pin / Unpin Tab",
+        "mac": "⌘D",
+        "windows": "Ctrl+D",
+        "notes": null,
+        "source": "https://web.archive.org/web/20260725225600/https://resources.arc.net/hc/en-us/articles/20595231349911-Keyboard-Shortcuts"
+      },
+      {
+        "id": "arc.copyURL",
+        "title": "Copy URL",
+        "mac": "⇧⌘C",
+        "windows": "Ctrl+Shift+C",
+        "notes": null,
+        "source": "https://web.archive.org/web/20260725225600/https://resources.arc.net/hc/en-us/articles/20595231349911-Keyboard-Shortcuts"
+      },
+      {
+        "id": "arc.sidebar",
+        "title": "Show / Hide Sidebar",
+        "mac": "⌘S",
+        "windows": "Ctrl+S",
+        "notes": null,
+        "source": "https://web.archive.org/web/20260725225600/https://resources.arc.net/hc/en-us/articles/20595231349911-Keyboard-Shortcuts"
+      },
+      {
+        "id": "arc.clearTabs",
+        "title": "Clear Unpinned Tabs",
+        "mac": "⇧⌘K",
+        "windows": "Ctrl+Shift+K",
+        "notes": null,
+        "source": "https://web.archive.org/web/20260725225600/https://resources.arc.net/hc/en-us/articles/20595231349911-Keyboard-Shortcuts"
+      },
+      {
+        "id": "arc.splitView",
+        "title": "Add Split View",
+        "mac": "⌃⇧=",
+        "windows": "Ctrl+Shift+Plus (+)",
+        "notes": "Arc writes Control-Shift-Plus; + is Shift-= on a US keyboard.",
+        "source": "https://web.archive.org/web/20260725225600/https://resources.arc.net/hc/en-us/articles/20595231349911-Keyboard-Shortcuts"
+      },
+      {
+        "id": "arc.closeSplit",
+        "title": "Close Split View",
+        "mac": "⌃⇧-",
+        "windows": "Ctrl+Shift+Minus (-)",
+        "notes": null,
+        "source": "https://web.archive.org/web/20260725225600/https://resources.arc.net/hc/en-us/articles/20595231349911-Keyboard-Shortcuts"
+      },
+      {
+        "id": "arc.nextSpace",
+        "title": "Next Space",
+        "mac": "⌥⌘→",
+        "windows": "Ctrl+Alt+→",
+        "notes": null,
+        "source": "https://web.archive.org/web/20260725225600/https://resources.arc.net/hc/en-us/articles/20595231349911-Keyboard-Shortcuts"
+      },
+      {
+        "id": "arc.previousSpace",
+        "title": "Previous Space",
+        "mac": "⌥⌘←",
+        "windows": "Ctrl+Alt+←",
+        "notes": null,
+        "source": "https://web.archive.org/web/20260725225600/https://resources.arc.net/hc/en-us/articles/20595231349911-Keyboard-Shortcuts"
+      }
+    ]
+  },
+  {
+    "app": "Microsoft Edge",
+    "macBundleIDs": [
+      "com.microsoft.edgemac"
+    ],
+    "windowsProcess": "msedge.exe",
+    "notes": "Bundle ID verified on this Mac (156.0).",
+    "actions": [
+      {
+        "id": "edge.newTab",
+        "title": "New Tab",
+        "mac": "⌘T",
+        "windows": "Ctrl+T",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/edge/keyboard-shortcuts-in-microsoft-edge"
+      },
+      {
+        "id": "edge.reopenTab",
+        "title": "Reopen Closed Tab",
+        "mac": "⇧⌘T",
+        "windows": "Ctrl+Shift+T",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/edge/keyboard-shortcuts-in-microsoft-edge"
+      },
+      {
+        "id": "edge.closeTab",
+        "title": "Close Tab",
+        "mac": "⌘W",
+        "windows": "Ctrl+W",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/edge/keyboard-shortcuts-in-microsoft-edge"
+      },
+      {
+        "id": "edge.reload",
+        "title": "Reload",
+        "mac": "⌘R",
+        "windows": "Ctrl+R",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/edge/keyboard-shortcuts-in-microsoft-edge"
+      },
+      {
+        "id": "edge.inPrivate",
+        "title": "New InPrivate Window",
+        "mac": "⇧⌘N",
+        "windows": "Ctrl+Shift+N",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/edge/keyboard-shortcuts-in-microsoft-edge"
+      },
+      {
+        "id": "edge.addressBar",
+        "title": "Address Bar",
+        "mac": "⌘L",
+        "windows": "Ctrl+L",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/edge/keyboard-shortcuts-in-microsoft-edge"
+      },
+      {
+        "id": "edge.favorite",
+        "title": "Add to Favorites",
+        "mac": "⌘D",
+        "windows": "Ctrl+D",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/edge/keyboard-shortcuts-in-microsoft-edge"
+      },
+      {
+        "id": "edge.favoritesBar",
+        "title": "Show / Hide Favorites Bar",
+        "mac": "⇧⌘B",
+        "windows": "Ctrl+Shift+B",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/edge/keyboard-shortcuts-in-microsoft-edge"
+      },
+      {
+        "id": "edge.history",
+        "title": "History",
+        "mac": "⌘Y",
+        "windows": "Ctrl+H",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/edge/keyboard-shortcuts-in-microsoft-edge"
+      },
+      {
+        "id": "edge.downloads",
+        "title": "Downloads",
+        "mac": "⌥⌘L",
+        "windows": "Ctrl+J",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/edge/keyboard-shortcuts-in-microsoft-edge"
+      },
+      {
+        "id": "edge.readAloud",
+        "title": "Read Aloud",
+        "mac": "⇧⌘U",
+        "windows": "Ctrl+Shift+U",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/edge/keyboard-shortcuts-in-microsoft-edge"
+      },
+      {
+        "id": "edge.find",
+        "title": "Find on Page",
+        "mac": "⌘F",
+        "windows": "Ctrl+F",
+        "notes": null,
+        "source": "https://support.microsoft.com/en-us/edge/keyboard-shortcuts-in-microsoft-edge"
+      }
+    ]
+  },
+  {
+    "app": "Spotify",
+    "macBundleIDs": [
+      "com.spotify.client"
+    ],
+    "windowsProcess": "Spotify.exe",
+    "notes": "com.spotify.client is the documented identifier (not installed here). Spotify's page writes 'Alt' for the Mac Option key. Its current list has no next/previous-track or volume shortcuts (Up/Down arrows move through lists), so those aren't included. Space only toggles playback when no text field has focus.",
+    "actions": [
+      {
+        "id": "spotify.playPause",
+        "title": "Play / Pause",
+        "mac": "Space",
+        "windows": "Space",
+        "notes": null,
+        "source": "https://support.spotify.com/us/article/keyboard-shortcuts/"
+      },
+      {
+        "id": "spotify.like",
+        "title": "Like / Unlike Song",
+        "mac": "⌥⇧B",
+        "windows": "Alt+Shift+B",
+        "notes": null,
+        "source": "https://support.spotify.com/us/article/keyboard-shortcuts/"
+      },
+      {
+        "id": "spotify.shuffle",
+        "title": "Shuffle",
+        "mac": "⌥S",
+        "windows": "Ctrl+S",
+        "notes": null,
+        "source": "https://support.spotify.com/us/article/keyboard-shortcuts/"
+      },
+      {
+        "id": "spotify.repeat",
+        "title": "Repeat",
+        "mac": "⌥R",
+        "windows": "Ctrl+R",
+        "notes": null,
+        "source": "https://support.spotify.com/us/article/keyboard-shortcuts/"
+      },
+      {
+        "id": "spotify.mute",
+        "title": "Mute / Unmute",
+        "mac": "M",
+        "windows": "M",
+        "notes": null,
+        "source": "https://support.spotify.com/us/article/keyboard-shortcuts/"
+      },
+      {
+        "id": "spotify.search",
+        "title": "Search",
+        "mac": "⌘K",
+        "windows": "Ctrl+K",
+        "notes": null,
+        "source": "https://support.spotify.com/us/article/keyboard-shortcuts/"
+      },
+      {
+        "id": "spotify.nowPlaying",
+        "title": "Now Playing",
+        "mac": "⌥⇧J",
+        "windows": "Alt+Shift+J",
+        "notes": null,
+        "source": "https://support.spotify.com/us/article/keyboard-shortcuts/"
+      },
+      {
+        "id": "spotify.queue",
+        "title": "Queue",
+        "mac": "⌥⇧Q",
+        "windows": "Alt+Shift+Q",
+        "notes": null,
+        "source": "https://support.spotify.com/us/article/keyboard-shortcuts/"
+      },
+      {
+        "id": "spotify.likedSongs",
+        "title": "Liked Songs",
+        "mac": "⌥⇧S",
+        "windows": "Alt+Shift+S",
+        "notes": null,
+        "source": "https://support.spotify.com/us/article/keyboard-shortcuts/"
+      }
+    ]
+  },
+  {
+    "app": "Apple Music",
+    "macBundleIDs": [
+      "com.apple.Music"
+    ],
+    "windowsProcess": "AppleMusic.exe",
+    "notes": "Bundle ID verified on this Mac (1.7.2). Windows column is Apple's Apple Music for Windows guide; AppleMusic.exe is not verified on a Windows PC. Left/Right arrow skip only while a song is playing from a list.",
+    "actions": [
+      {
+        "id": "music.playPause",
+        "title": "Play / Pause",
+        "mac": "Space",
+        "windows": "Ctrl+Space",
+        "notes": null,
+        "source": "https://support.apple.com/guide/music/keyboard-shortcuts-mus1019/mac",
+        "windowsSource": "https://support.apple.com/guide/music-windows/keyboard-shortcuts-mus1019/windows"
+      },
+      {
+        "id": "music.next",
+        "title": "Next Song",
+        "mac": "→",
+        "windows": "Ctrl+→",
+        "notes": null,
+        "source": "https://support.apple.com/guide/music/keyboard-shortcuts-mus1019/mac",
+        "windowsSource": "https://support.apple.com/guide/music-windows/keyboard-shortcuts-mus1019/windows"
+      },
+      {
+        "id": "music.previous",
+        "title": "Previous Song",
+        "mac": "←",
+        "windows": "Ctrl+←",
+        "notes": null,
+        "source": "https://support.apple.com/guide/music/keyboard-shortcuts-mus1019/mac",
+        "windowsSource": "https://support.apple.com/guide/music-windows/keyboard-shortcuts-mus1019/windows"
+      },
+      {
+        "id": "music.volumeUp",
+        "title": "Volume Up",
+        "mac": "⌘↑",
+        "windows": "Ctrl+↑",
+        "notes": null,
+        "source": "https://support.apple.com/guide/music/keyboard-shortcuts-mus1019/mac",
+        "windowsSource": "https://support.apple.com/guide/music-windows/keyboard-shortcuts-mus1019/windows"
+      },
+      {
+        "id": "music.volumeDown",
+        "title": "Volume Down",
+        "mac": "⌘↓",
+        "windows": "Ctrl+↓",
+        "notes": null,
+        "source": "https://support.apple.com/guide/music/keyboard-shortcuts-mus1019/mac",
+        "windowsSource": "https://support.apple.com/guide/music-windows/keyboard-shortcuts-mus1019/windows"
+      },
+      {
+        "id": "music.stop",
+        "title": "Stop",
+        "mac": "⌘.",
+        "windows": "Ctrl+.",
+        "notes": null,
+        "source": "https://support.apple.com/guide/music/keyboard-shortcuts-mus1019/mac",
+        "windowsSource": "https://support.apple.com/guide/music-windows/keyboard-shortcuts-mus1019/windows"
+      },
+      {
+        "id": "music.currentSong",
+        "title": "Show Current Song",
+        "mac": "⌘L",
+        "windows": "Ctrl+L",
+        "notes": null,
+        "source": "https://support.apple.com/guide/music/keyboard-shortcuts-mus1019/mac",
+        "windowsSource": "https://support.apple.com/guide/music-windows/keyboard-shortcuts-mus1019/windows"
+      },
+      {
+        "id": "music.queue",
+        "title": "Show Queue",
+        "mac": "⌥⌘U",
+        "windows": null,
+        "notes": "No Windows shortcut listed.",
+        "source": "https://support.apple.com/guide/music/keyboard-shortcuts-mus1019/mac"
+      },
+      {
+        "id": "music.miniPlayer",
+        "title": "MiniPlayer",
+        "mac": "⌥⌘M",
+        "windows": "Shift+Ctrl+M",
+        "notes": "Mac: ⇧⌘M also works.",
+        "source": "https://support.apple.com/guide/music/keyboard-shortcuts-mus1019/mac",
+        "windowsSource": "https://support.apple.com/guide/music-windows/keyboard-shortcuts-mus1019/windows"
+      },
+      {
+        "id": "music.fullScreen",
+        "title": "Full Screen Player",
+        "mac": "⇧⌘F",
+        "windows": "Shift+Ctrl+F",
+        "notes": null,
+        "source": "https://support.apple.com/guide/music/keyboard-shortcuts-mus1019/mac",
+        "windowsSource": "https://support.apple.com/guide/music-windows/keyboard-shortcuts-mus1019/windows"
+      },
+      {
+        "id": "music.search",
+        "title": "Search",
+        "mac": "⌘F",
+        "windows": null,
+        "notes": "Windows uses access keys pressed in sequence (Alt, then N, F), which a single combo can't send.",
+        "source": "https://support.apple.com/guide/music/keyboard-shortcuts-mus1019/mac"
+      }
+    ]
+  },
+  {
+    "app": "Finder",
+    "macBundleIDs": [
+      "com.apple.finder"
+    ],
+    "windowsProcess": null,
+    "notes": "Bundle ID verified on this Mac (/System/Library/CoreServices/Finder.app). Mac only.",
+    "actions": [
+      {
+        "id": "finder.newWindow",
+        "title": "New Finder Window",
+        "mac": "⌘N",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/en-us/102650"
+      },
+      {
+        "id": "finder.newFolder",
+        "title": "New Folder",
+        "mac": "⇧⌘N",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/en-us/102650"
+      },
+      {
+        "id": "finder.goToFolder",
+        "title": "Go to Folder",
+        "mac": "⇧⌘G",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/en-us/102650"
+      },
+      {
+        "id": "finder.downloads",
+        "title": "Downloads",
+        "mac": "⌥⌘L",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/en-us/102650"
+      },
+      {
+        "id": "finder.desktop",
+        "title": "Desktop",
+        "mac": "⇧⌘D",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/en-us/102650"
+      },
+      {
+        "id": "finder.home",
+        "title": "Home",
+        "mac": "⇧⌘H",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/en-us/102650"
+      },
+      {
+        "id": "finder.documents",
+        "title": "Documents",
+        "mac": "⇧⌘O",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/en-us/102650"
+      },
+      {
+        "id": "finder.airdrop",
+        "title": "AirDrop",
+        "mac": "⇧⌘R",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/en-us/102650"
+      },
+      {
+        "id": "finder.connect",
+        "title": "Connect to Server",
+        "mac": "⌘K",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/en-us/102650"
+      },
+      {
+        "id": "finder.getInfo",
+        "title": "Get Info",
+        "mac": "⌘I",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/en-us/102650"
+      },
+      {
+        "id": "finder.quickLook",
+        "title": "Quick Look",
+        "mac": "⌘Y",
+        "windows": null,
+        "notes": "Space bar also works.",
+        "source": "https://support.apple.com/en-us/102650"
+      },
+      {
+        "id": "finder.trash",
+        "title": "Move to Trash",
+        "mac": "⌘Delete",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/en-us/102650"
+      }
+    ]
+  },
+  {
+    "app": "Mail",
+    "macBundleIDs": [
+      "com.apple.mail"
+    ],
+    "windowsProcess": null,
+    "notes": "Bundle ID verified on this Mac. Mac only.",
+    "actions": [
+      {
+        "id": "mail.new",
+        "title": "New Email",
+        "mac": "⌘N",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/mail/keyboard-shortcuts-mlhlb94f262b/mac"
+      },
+      {
+        "id": "mail.getMail",
+        "title": "Get New Mail",
+        "mac": "⇧⌘N",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/mail/keyboard-shortcuts-mlhlb94f262b/mac"
+      },
+      {
+        "id": "mail.send",
+        "title": "Send",
+        "mac": "⇧⌘D",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/mail/keyboard-shortcuts-mlhlb94f262b/mac"
+      },
+      {
+        "id": "mail.reply",
+        "title": "Reply",
+        "mac": "⌘R",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/mail/keyboard-shortcuts-mlhlb94f262b/mac"
+      },
+      {
+        "id": "mail.replyAll",
+        "title": "Reply All",
+        "mac": "⇧⌘R",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/mail/keyboard-shortcuts-mlhlb94f262b/mac"
+      },
+      {
+        "id": "mail.forward",
+        "title": "Forward",
+        "mac": "⇧⌘F",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/mail/keyboard-shortcuts-mlhlb94f262b/mac"
+      },
+      {
+        "id": "mail.archive",
+        "title": "Archive",
+        "mac": "⌃⌘A",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/mail/keyboard-shortcuts-mlhlb94f262b/mac"
+      },
+      {
+        "id": "mail.markRead",
+        "title": "Mark Read / Unread",
+        "mac": "⇧⌘U",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/mail/keyboard-shortcuts-mlhlb94f262b/mac"
+      },
+      {
+        "id": "mail.junk",
+        "title": "Move to Junk",
+        "mac": "⇧⌘J",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/mail/keyboard-shortcuts-mlhlb94f262b/mac"
+      },
+      {
+        "id": "mail.movePredicted",
+        "title": "Move to Predicted Mailbox",
+        "mac": "⌃⌘M",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/mail/keyboard-shortcuts-mlhlb94f262b/mac"
+      },
+      {
+        "id": "mail.filter",
+        "title": "Filter Mailbox",
+        "mac": "⌘L",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/mail/keyboard-shortcuts-mlhlb94f262b/mac"
+      },
+      {
+        "id": "mail.sidebar",
+        "title": "Show / Hide Sidebar",
+        "mac": "⌃⌘S",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/mail/keyboard-shortcuts-mlhlb94f262b/mac"
+      }
+    ]
+  },
+  {
+    "app": "Notes",
+    "macBundleIDs": [
+      "com.apple.Notes"
+    ],
+    "windowsProcess": null,
+    "notes": "Bundle ID verified on this Mac (4.13). Mac only. Quick Note (Fn-Q) needs the Fn key, so it isn't included.",
+    "actions": [
+      {
+        "id": "notes.new",
+        "title": "New Note",
+        "mac": "⌘N",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/notes/keyboard-shortcuts-and-gestures-apd46c25187e/mac"
+      },
+      {
+        "id": "notes.newFolder",
+        "title": "New Folder",
+        "mac": "⇧⌘N",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/notes/keyboard-shortcuts-and-gestures-apd46c25187e/mac"
+      },
+      {
+        "id": "notes.search",
+        "title": "Search All Notes",
+        "mac": "⌥⌘F",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/notes/keyboard-shortcuts-and-gestures-apd46c25187e/mac"
+      },
+      {
+        "id": "notes.checklist",
+        "title": "Checklist",
+        "mac": "⇧⌘L",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/notes/keyboard-shortcuts-and-gestures-apd46c25187e/mac"
+      },
+      {
+        "id": "notes.checkItem",
+        "title": "Check / Uncheck Item",
+        "mac": "⇧⌘U",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/notes/keyboard-shortcuts-and-gestures-apd46c25187e/mac"
+      },
+      {
+        "id": "notes.table",
+        "title": "Insert Table",
+        "mac": "⌥⌘T",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/notes/keyboard-shortcuts-and-gestures-apd46c25187e/mac"
+      },
+      {
+        "id": "notes.title",
+        "title": "Title Format",
+        "mac": "⇧⌘T",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/notes/keyboard-shortcuts-and-gestures-apd46c25187e/mac"
+      },
+      {
+        "id": "notes.heading",
+        "title": "Heading Format",
+        "mac": "⇧⌘H",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/notes/keyboard-shortcuts-and-gestures-apd46c25187e/mac"
+      },
+      {
+        "id": "notes.bullets",
+        "title": "Bulleted List",
+        "mac": "⇧⌘7",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/notes/keyboard-shortcuts-and-gestures-apd46c25187e/mac"
+      },
+      {
+        "id": "notes.attach",
+        "title": "Attach File",
+        "mac": "⇧⌘A",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/notes/keyboard-shortcuts-and-gestures-apd46c25187e/mac"
+      },
+      {
+        "id": "notes.sidebar",
+        "title": "Show / Hide Sidebar",
+        "mac": "⌃⌘S",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/notes/keyboard-shortcuts-and-gestures-apd46c25187e/mac"
+      },
+      {
+        "id": "notes.duplicate",
+        "title": "Duplicate Note",
+        "mac": "⌘D",
+        "windows": null,
+        "notes": null,
+        "source": "https://support.apple.com/guide/notes/keyboard-shortcuts-and-gestures-apd46c25187e/mac"
+      }
+    ]
+  }
+]

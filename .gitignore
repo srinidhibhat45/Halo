@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+
+# Swift (macOS app)
+.build/
+.swiftpm/
+/macos/build/
+/macos/dist/
+
+# .NET (Windows app)
+bin/
+obj/
+.vs/
+*.user
+windows/artifacts/
+windows/Releases/
+
+# Debug renders (Halo --render-snapshots / --render-ui)
+snapshots*/
+ui-snapshots*/

@@ -1,0 +1,80 @@
+# Builds, tests and packages Halo for Windows when a release is published, and attaches HaloSetup.exe
+# and the Velopack update files to that tag's GitHub Release (creating the release if the macOS
+# workflow hasn't yet). The app's updater reads releases.win.json from the latest published release.
+name: Release (Windows)
+
+on:
+  # `make publish` (Scripts/publish-release.sh) creates the release with the macOS files; this
+  # adds the Windows ones to it.
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing tag to build and attach to (e.g. v1.2.0)
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-windows-${{ inputs.tag || github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: pwsh
+        working-directory: windows
+    env:
+      DOTNET_CLI_TELEMETRY_OPTOUT: 1
+      DOTNET_NOLOGO: 1
+      TAG: ${{ inputs.tag || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref }}
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Version from the tag
+        id: version
+        run: |
+          $version = $env:TAG.TrimStart('v')
+          if ($version -notmatch '^\d+\.\d+\.\d+(-[0-9A-Za-z.-]+)?$') { throw "Tag $env:TAG isn't vMAJOR.MINOR.PATCH." }
+          "version=$version" >> $env:GITHUB_OUTPUT
+
+      - name: Test
+        run: dotnet test tests/Halo.Core.Tests -c Release
+
+      - name: Build (warnings are errors)
+        run: dotnet build Halo.Windows.sln -c Release
+
+      - name: Package with Velopack
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./build/pack.ps1 -Version '${{ steps.version.outputs.version }}' -PreviousReleasesFrom '${{ github.server_url }}/${{ github.repository }}'
+
+      - name: Attach to the GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release view $env:TAG *> $null
+          if ($LASTEXITCODE -ne 0) {
+            gh release create $env:TAG --verify-tag --title "Halo $env:TAG" --notes "Windows: download and run HaloSetup.exe. Installed copies update themselves."
+            if ($LASTEXITCODE -ne 0) { throw 'Creating the release failed.' }
+          }
+          $files = Get-ChildItem artifacts/releases -File | ForEach-Object { $_.FullName }
+          gh release upload $env:TAG @files --clobber
+          if ($LASTEXITCODE -ne 0) { throw 'Uploading the release files failed.' }
+
+      - name: Keep the packages as a build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: halo-windows-${{ steps.version.outputs.version }}
+          path: windows/artifacts/releases
