@@ -92,7 +92,7 @@ struct RingEditorView: View {
     @ToolbarContentBuilder
     private var toolbar: some ToolbarContent {
         ToolbarItem(placement: .navigation) {
-            Toggle(isOn: Binding(get: { session.showsLibrary }, set: setLibraryVisible)) {
+            Toggle(isOn: Binding(get: { session.showsLibrary }, set: { setLibraryVisible($0) })) {
                 Label("Action Library", systemImage: "books.vertical")
             }
             .help(session.showsLibrary ? "Hide the action library" : "Show the action library, to drag actions onto the ring")
@@ -103,7 +103,7 @@ struct RingEditorView: View {
         }
 
         ToolbarItemGroup(placement: .primaryAction) {
-            Picker("Slots", selection: Binding(get: { session.ring.slotCount }, set: requestSlotCount)) {
+            Picker("Slots", selection: Binding(get: { session.ring.slotCount }, set: { requestSlotCount($0) })) {
                 ForEach(Array(Ring.slotRange), id: \.self) { count in
                     Text("\(count) Slots").tag(count)
                 }
