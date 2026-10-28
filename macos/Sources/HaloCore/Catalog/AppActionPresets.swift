@@ -50,6 +50,14 @@ public enum AppActionPresets {
         all.filter { $0.bundleIDs.contains(bundleID) }
     }
 
+    /// Slots holding the app's presets, in the catalogue's order (most useful first), at most
+    /// `limit`, aimed at `bundleID`. Empty when Halo knows no actions for the app.
+    public static func suggestedSlots(forBundleID bundleID: String, limit: Int = Ring.defaultSlotCount) -> [Slot] {
+        presets(forBundleID: bundleID).prefix(max(0, limit)).map { preset in
+            Slot(action: preset.action(bundleID: bundleID))
+        }
+    }
+
     /// Apps that have presets, by name, with their bundle identifiers.
     public static var apps: [(name: String, bundleIDs: [String])] {
         var seen = Set<String>()

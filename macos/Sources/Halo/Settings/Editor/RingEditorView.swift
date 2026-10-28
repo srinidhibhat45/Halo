@@ -119,6 +119,20 @@ struct RingEditorView: View {
             .help("Ring style, for every ring")
         }
 
+        if let profile = session.profile, !AppActionPresets.presets(forBundleID: profile.bundleID).isEmpty {
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    if AppModel.shared.addSuggestedActions(to: profile.id) == 0 { NSSound.beep() }
+                } label: {
+                    Label("Add \(profile.appName) Actions", systemImage: "wand.and.stars")
+                }
+                .help(canAddSuggested(profile)
+                      ? "Fill empty slots with \(profile.appName)'s own shortcuts (Mute, Export…)"
+                      : "Every empty slot is used, or the ring already has all of \(profile.appName)'s actions")
+                .disabled(!canAddSuggested(profile))
+            }
+        }
+
         if let profile = session.profile {
             ToolbarItemGroup(placement: .primaryAction) {
                 Toggle(isOn: profileBinding(profile.id, \.isEnabled, on: "Turn On \(profile.appName) Ring", off: "Turn Off \(profile.appName) Ring")) {
@@ -162,6 +176,14 @@ struct RingEditorView: View {
                 UserDefaults.standard.set(shown, forKey: RingEditorSession.inspectorKey)
             }
         )
+    }
+
+    /// True when the app ring has an empty top-level slot and a preset it doesn't hold yet.
+    private func canAddSuggested(_ profile: AppProfile) -> Bool {
+        let present = Set(profile.ring.slots.compactMap(\.action))
+        let hasEmpty = profile.ring.slots.contains { $0.action == nil }
+        return hasEmpty && AppActionPresets.suggestedSlots(forBundleID: profile.bundleID, limit: Ring.slotRange.upperBound)
+            .contains { $0.action.map { !present.contains($0) } ?? false }
     }
 
     private func setLibraryVisible(_ visible: Bool) {

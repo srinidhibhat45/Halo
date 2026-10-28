@@ -34,4 +34,15 @@ struct AppActionPresetsTests {
         #expect(titles.contains("Mute / Unmute"))
         #expect(titles.contains("Raise / Lower Hand"))
     }
+
+    @Test("Suggested slots take the app's presets in order, aimed at that app")
+    func suggested() {
+        let slots = AppActionPresets.suggestedSlots(forBundleID: "com.figma.Desktop", limit: 8)
+        #expect(!slots.isEmpty && slots.count <= 8)
+        for slot in slots {
+            guard case .appShortcut(let shortcut)? = slot.action else { Issue.record("not an app shortcut"); continue }
+            #expect(shortcut.bundleID == "com.figma.Desktop")
+        }
+        #expect(AppActionPresets.suggestedSlots(forBundleID: "com.example.unknown").isEmpty)
+    }
 }

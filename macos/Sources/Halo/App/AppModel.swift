@@ -2,6 +2,16 @@ import AppKit
 import HaloCore
 import Observation
 
+/// What a new app ring starts with.
+enum AppRingStart: Hashable, CaseIterable {
+    /// The app's own actions (presets) when Halo knows some; other slots show Everywhere's.
+    case appActions
+    /// A copy of the Everywhere ring.
+    case copyOfEverywhere
+    /// Empty slots that show Everywhere's actions until filled.
+    case empty
+}
+
 /// Which ring an edit applies to.
 enum RingTarget: Hashable, Sendable {
     case global
@@ -125,12 +135,45 @@ final class AppModel {
     /// Adds an app ring (or returns the existing one for that app). New rings start empty and
     /// inherit the global ring's slots until filled, unless `copyGlobal` copies them outright.
     @discardableResult
-    func addAppProfile(bundleID: String, name: String, copyGlobal: Bool = false) -> AppProfile.ID {
+    func addAppProfile(bundleID: String, name: String, start: AppRingStart = .empty) -> AppProfile.ID {
         if let existing = config.profileIndex(bundleID: bundleID) { return config.appProfiles[existing].id }
-        let ring = copyGlobal ? Self.freshIDs(config.globalRing) : Ring(slotCount: config.globalRing.slotCount)
-        let profile = AppProfile(bundleID: bundleID, appName: name, ring: ring, inheritsGlobalSlots: !copyGlobal)
+        let slotCount = config.globalRing.slotCount
+        let ring: Ring
+        var inherits = true
+        switch start {
+        case .copyOfEverywhere:
+            ring = Self.freshIDs(config.globalRing)
+            inherits = false
+        case .appActions:
+            // The app's own actions first; any slots left show Everywhere's actions.
+            var filled = Ring(slotCount: slotCount)
+            for (i, slot) in AppActionPresets.suggestedSlots(forBundleID: bundleID, limit: slotCount).enumerated() {
+                filled[i] = slot
+            }
+            ring = filled
+        case .empty:
+            ring = Ring(slotCount: slotCount)
+        }
+        let profile = AppProfile(bundleID: bundleID, appName: name, ring: ring, inheritsGlobalSlots: inherits)
         update("Add \(name) Ring") { $0.appProfiles.append(profile) }
         return profile.id
+    }
+
+    /// Fills the empty slots of an app ring's top level with the app's preset actions it doesn't
+    /// have yet. Returns how many were added.
+    @discardableResult
+    func addSuggestedActions(to id: AppProfile.ID) -> Int {
+        guard let profile = profile(id) else { return 0 }
+        let present = Set(profile.ring.slots.compactMap(\.action))
+        let fresh = AppActionPresets.suggestedSlots(forBundleID: profile.bundleID, limit: Ring.slotRange.upperBound)
+            .filter { $0.action.map { !present.contains($0) } ?? false }
+        let empty = profile.ring.slots.indices.filter { profile.ring.slots[$0].action == nil }
+        let count = min(fresh.count, empty.count)
+        guard count > 0 else { return 0 }
+        updateRing(.app(id), "Add \(profile.appName) Actions") { ring in
+            for (slot, index) in zip(fresh, empty) { ring[index] = slot }
+        }
+        return count
     }
 
     func updateProfile(_ id: AppProfile.ID, _ actionName: String, _ body: (inout AppProfile) -> Void) {

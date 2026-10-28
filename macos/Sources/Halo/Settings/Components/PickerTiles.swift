@@ -10,6 +10,8 @@ struct IconTile<Icon: View>: View {
     var isHighlighted = false
     /// A small badge on the icon's corner, e.g. "this app already has a ring".
     var badge: String?
+    /// A short accent-coloured line under a one-line title, e.g. "10 actions".
+    var caption: String?
     let action: () -> Void
     @ViewBuilder let icon: () -> Icon
 
@@ -31,11 +33,25 @@ struct IconTile<Icon: View>: View {
                                 .accessibilityHidden(true)
                         }
                     }
-                Text(title)
-                    .font(.caption)
-                    .multilineTextAlignment(.center)
-                    .lineLimit(2, reservesSpace: true)
+                if let caption {
+                    // Title and caption share the title's two lines, so rows stay aligned.
+                    VStack(spacing: 1) {
+                        Text(title)
+                            .font(.caption)
+                            .lineLimit(1)
+                        Text(caption)
+                            .font(.caption2.weight(.medium))
+                            .foregroundStyle(.tint)
+                            .lineLimit(1)
+                    }
                     .frame(maxWidth: .infinity)
+                } else {
+                    Text(title)
+                        .font(.caption)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(2, reservesSpace: true)
+                        .frame(maxWidth: .infinity)
+                }
             }
             .padding(.top, 8)
             .padding(.bottom, 5)
@@ -47,7 +63,7 @@ struct IconTile<Icon: View>: View {
         .focusable(false)
         .onHover { isHovered = $0 }
         .help(help ?? title)
-        .accessibilityLabel(badge.map { "\(title), \($0)" } ?? title)
+        .accessibilityLabel([title, badge, caption].compactMap { $0 }.joined(separator: ", "))
         .accessibilityAddTraits(isHighlighted ? .isSelected : [])
     }
 }

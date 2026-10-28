@@ -16,7 +16,7 @@ struct AddAppRingSheet: View {
     @ViewState private var query: String
     /// The keyboard highlight (an `AppGroup.rowID`); nil means "the first result while searching".
     @ViewState private var highlighted: String?
-    @ViewState private var startsWithCopy = false
+    @ViewState private var start: AppRingStart = .appActions
     @ViewState private var alert: PaneAlert?
     @FocusState private var focus: SheetField?
 
@@ -144,6 +144,7 @@ struct AddAppRingSheet: View {
                                          help: existing ? "Show the \(app.name) ring" : "Create a ring for \(app.name)",
                                          isHighlighted: group.rowID(app) == current,
                                          badge: existing ? "has a ring" : nil,
+                                         caption: existing ? nil : Self.actionsBadge(app),
                                          action: { choose(app) }) {
                                     Image(nsImage: AppCatalog.shared.icon(forPath: app.url.path(percentEncoded: false)))
                                         .resizable()
@@ -191,14 +192,31 @@ struct AddAppRingSheet: View {
         }
     }
 
+    private var startExplanation: String {
+        switch start {
+        case .appActions: "Apps marked with actions get their shortcuts (Mute, Export…) ready to use; other slots show Everywhere's actions."
+        case .copyOfEverywhere: "A copy you can change without affecting Everywhere."
+        case .empty: "Empty slots show the Everywhere actions until you fill them."
+        }
+    }
+
+    /// "12 actions" under apps Halo has ready-made actions for.
+    private static func actionsBadge(_ app: AppInfo) -> String? {
+        let count = AppActionPresets.presets(forBundleID: app.bundleID).count
+        return count > 0 ? "\(count) actions" : nil
+    }
+
     private var footer: some View {
         HStack(alignment: .center, spacing: 12) {
             VStack(alignment: .leading, spacing: 2) {
-                Toggle("Start with a copy of the Everywhere actions", isOn: $startsWithCopy)
-                    .toggleStyle(.checkbox)
-                Text(startsWithCopy
-                     ? "You can change them without affecting Everywhere."
-                     : "Otherwise its empty slots show the Everywhere actions until you fill them.")
+                Picker("Start with", selection: $start) {
+                    Text("The App's Own Actions").tag(AppRingStart.appActions)
+                    Text("A Copy of Everywhere").tag(AppRingStart.copyOfEverywhere)
+                    Text("Empty Slots").tag(AppRingStart.empty)
+                }
+                .pickerStyle(.menu)
+                .fixedSize()
+                Text(startExplanation)
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .padding(.leading, 20)
@@ -251,7 +269,7 @@ struct AddAppRingSheet: View {
 
     /// Adds a ring for `app` (or finds its existing one), shows it and closes the sheet.
     private func choose(_ app: AppInfo) {
-        let id = model.addAppProfile(bundleID: app.bundleID, name: app.name, copyGlobal: startsWithCopy)
+        let id = model.addAppProfile(bundleID: app.bundleID, name: app.name, start: start)
         onChoose(id)
         dismiss()
     }
