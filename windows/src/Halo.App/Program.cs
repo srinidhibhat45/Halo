@@ -22,8 +22,11 @@ internal static class Program
             return 0;
         }
 
-        // --self-test <folder>: start normally, check the first-run essentials, save a report, quit.
-        var selfTest = Array.IndexOf(args, "--self-test") is var i and >= 0 && i + 1 < args.Length ? args[i + 1] : null;
+        // --self-test <folder> (or HALO_SELF_TEST=<folder>, which survives being started by the
+        // installer): start normally, check the first-run essentials, save a report, quit.
+        var selfTest = Array.IndexOf(args, "--self-test") is var i and >= 0 && i + 1 < args.Length
+            ? args[i + 1]
+            : Environment.GetEnvironmentVariable("HALO_SELF_TEST") is { Length: > 0 } folder ? folder : null;
         var app = new HaloApplication(instance, startedAtSignIn: args.Contains(StartWithWindows.BackgroundArgument), selfTest);
         app.InitializeComponent();
         return app.Run();

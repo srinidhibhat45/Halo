@@ -44,10 +44,10 @@ jobs:
       - name: Build (warnings are errors)
         run: dotnet build Halo.Windows.sln -c Release
 
-  # Builds HaloSetup.exe as a release would, installs it silently on a clean Windows machine, lets
-  # the installer start Halo with --self-test (the first run a new user gets), checks the report,
-  # then uninstalls. The installer, screenshots and report are kept as the "halo-windows-installer"
-  # artifact.
+  # Builds HaloSetup.exe as a release would and runs it on a clean Windows machine exactly as a
+  # new user does (no arguments). Setup starts Halo when it finishes; HALO_SELF_TEST makes that first
+  # run check itself, save screenshots and a report, and quit. Then Halo is uninstalled. The
+  # installer, screenshots and report are kept as the "halo-windows-installer" artifact.
   windows-installer:
     runs-on: windows-latest
     timeout-minutes: 30
@@ -72,21 +72,22 @@ jobs:
           $out = Join-Path $env:RUNNER_TEMP 'halo-self-test'
           New-Item -ItemType Directory -Force $out | Out-Null
           $report = Join-Path $out 'report.txt'
+          $setupLog = Join-Path $out 'setup.log'
+          $env:HALO_SELF_TEST = $out
 
-          $setup = Start-Process (Resolve-Path artifacts/releases/HaloSetup.exe).Path -PassThru `
-            -ArgumentList '--silent', '--log', (Join-Path $out 'setup.log'), '--', '--self-test', $out
-          if (-not $setup.WaitForExit(300000)) { throw 'Setup did not finish within 5 minutes.' }
-          if ($setup.ExitCode -ne 0) { Get-Content (Join-Path $out 'setup.log'); throw "Setup failed (exit code $($setup.ExitCode))." }
+          # --log only adds a log file; a user's double-click runs the same code path.
+          $setup = Start-Process (Resolve-Path artifacts/releases/HaloSetup.exe).Path -ArgumentList '--log', $setupLog -PassThru
+          if (-not $setup.WaitForExit(300000)) { Get-Content $setupLog -ErrorAction SilentlyContinue; throw 'Setup did not finish within 5 minutes.' }
+          if ($setup.ExitCode -ne 0) { Get-Content $setupLog; throw "Setup failed (exit code $($setup.ExitCode))." }
 
           $installed = Join-Path $env:LOCALAPPDATA 'Halo'
           if (-not (Test-Path (Join-Path $installed 'current/Halo.exe'))) { throw "Halo.exe isn't in $installed\current." }
           $shortcuts = Get-ChildItem (Join-Path $env:APPDATA 'Microsoft/Windows/Start Menu/Programs') -Recurse -Filter 'Halo*.lnk'
           if (-not $shortcuts) { throw 'No Start menu shortcut for Halo.' }
 
-          # Setup starts Halo with --self-test; it writes report.txt and quits.
           $deadline = (Get-Date).AddMinutes(3)
           while (-not (Test-Path $report) -and (Get-Date) -lt $deadline) { Start-Sleep -Seconds 2 }
-          if (-not (Test-Path $report)) { Get-Content (Join-Path $out 'setup.log'); throw 'Halo never wrote its self-test report.' }
+          if (-not (Test-Path $report)) { Get-Content $setupLog; throw 'Halo never wrote its self-test report (did Setup start it?).' }
           Start-Sleep -Seconds 3
           Get-Content $report
           if (-not (Select-String -Path $report -SimpleMatch 'All checks passed.' -Quiet)) { throw 'Halo self-test failed.' }

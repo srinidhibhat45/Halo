@@ -12,7 +12,7 @@ using static Halo.App.Interop.Native;
 namespace Halo.App;
 
 /// <summary>
-/// <c>Halo.exe --self-test &lt;folder&gt;</c>: starts Halo as a user would, then checks the pieces a
+/// <c>Halo.exe --self-test &lt;folder&gt;</c> (or <c>HALO_SELF_TEST=&lt;folder&gt;</c>): starts Halo as a user would, then checks the pieces a
 /// first run depends on (settings, keyboard hook, tray icon, settings window), presses the trigger
 /// the way mouse software does, and saves screenshots and report.txt to the folder. Exits 0 when
 /// every check passed. CI runs it against the installed copy (see .github/workflows/ci.yml).
