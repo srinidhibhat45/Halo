@@ -7,7 +7,7 @@
     1. dotnet publish: self-contained, so users don't need .NET installed.
     2. Optionally downloads the previous release from GitHub so Velopack can build delta updates.
     3. vpk pack: creates Setup.exe, the portable zip, the full (and delta) packages and the feed.
-    4. Copies the installer to HaloSetup.exe.
+    4. Renames the installer to HaloSetup.exe.
     Output: windows/artifacts/releases (everything there is attached to the GitHub Release).
 
 .EXAMPLE
@@ -90,9 +90,10 @@ Invoke-Checked 'vpk pack' {
         --outputDir $releaseDir
 }
 
+# One installer with a stable name, so releases/latest/download/HaloSetup.exe always works.
 $setup = Get-ChildItem $releaseDir -Filter '*-Setup.exe' | Select-Object -First 1
 if (-not $setup) { throw "vpk didn't produce a Setup.exe in $releaseDir." }
-Copy-Item $setup.FullName (Join-Path $releaseDir 'HaloSetup.exe') -Force
+Move-Item $setup.FullName (Join-Path $releaseDir 'HaloSetup.exe') -Force
 
 Write-Host "Done. Release files in ${releaseDir}:"
 Get-ChildItem $releaseDir -File | ForEach-Object { Write-Host "  $($_.Name)" }

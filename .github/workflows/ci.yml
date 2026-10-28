@@ -43,3 +43,65 @@ jobs:
         run: dotnet test tests/Halo.Core.Tests -c Release
       - name: Build (warnings are errors)
         run: dotnet build Halo.Windows.sln -c Release
+
+  # Builds HaloSetup.exe as a release would, installs it silently on a clean Windows machine, lets
+  # the installer start Halo with --self-test (the first run a new user gets), checks the report,
+  # then uninstalls. The installer, screenshots and report are kept as the "halo-windows-installer"
+  # artifact.
+  windows-installer:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: pwsh
+        working-directory: windows
+    env:
+      DOTNET_CLI_TELEMETRY_OPTOUT: 1
+      DOTNET_NOLOGO: 1
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Build the installer
+        run: ./build/pack.ps1 -Version (Get-Content ../VERSION -Raw).Trim()
+
+      - name: Install, first run (self-test), uninstall
+        run: |
+          $out = Join-Path $env:RUNNER_TEMP 'halo-self-test'
+          New-Item -ItemType Directory -Force $out | Out-Null
+          $report = Join-Path $out 'report.txt'
+
+          $setup = Start-Process artifacts/releases/HaloSetup.exe -PassThru `
+            -ArgumentList '--silent', '--log', (Join-Path $out 'setup.log'), '--', '--self-test', $out
+          if (-not $setup.WaitForExit(300000)) { throw 'Setup did not finish within 5 minutes.' }
+          if ($setup.ExitCode -ne 0) { Get-Content (Join-Path $out 'setup.log'); throw "Setup failed (exit code $($setup.ExitCode))." }
+
+          $installed = Join-Path $env:LOCALAPPDATA 'Halo'
+          if (-not (Test-Path (Join-Path $installed 'current/Halo.exe'))) { throw "Halo.exe isn't in $installed\current." }
+          $shortcuts = Get-ChildItem (Join-Path $env:APPDATA 'Microsoft/Windows/Start Menu/Programs') -Recurse -Filter 'Halo*.lnk'
+          if (-not $shortcuts) { throw 'No Start menu shortcut for Halo.' }
+
+          # Setup starts Halo with --self-test; it writes report.txt and quits.
+          $deadline = (Get-Date).AddMinutes(3)
+          while (-not (Test-Path $report) -and (Get-Date) -lt $deadline) { Start-Sleep -Seconds 2 }
+          if (-not (Test-Path $report)) { Get-Content (Join-Path $out 'setup.log'); throw 'Halo never wrote its self-test report.' }
+          Start-Sleep -Seconds 3
+          Get-Content $report
+          if (-not (Select-String -Path $report -SimpleMatch 'All checks passed.' -Quiet)) { throw 'Halo self-test failed.' }
+          if (Get-Process Halo -ErrorAction SilentlyContinue) { throw 'Halo kept running after its self-test.' }
+
+          $uninstall = Start-Process (Join-Path $installed 'Update.exe') -ArgumentList 'uninstall', '--silent' -PassThru
+          if (-not $uninstall.WaitForExit(120000) -or $uninstall.ExitCode -ne 0) { throw 'Uninstalling failed.' }
+          if (Test-Path (Join-Path $installed 'current/Halo.exe')) { throw 'Halo.exe is still there after uninstalling.' }
+          Write-Host 'Installed, ran and uninstalled cleanly.'
+
+      - name: Keep the installer and self-test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: halo-windows-installer
+          path: |
+            windows/artifacts/releases/HaloSetup.exe
+            ${{ runner.temp }}/halo-self-test

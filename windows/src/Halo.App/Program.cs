@@ -22,7 +22,9 @@ internal static class Program
             return 0;
         }
 
-        var app = new HaloApplication(instance, startedAtSignIn: args.Contains(StartWithWindows.BackgroundArgument));
+        // --self-test <folder>: start normally, check the first-run essentials, save a report, quit.
+        var selfTest = Array.IndexOf(args, "--self-test") is var i and >= 0 && i + 1 < args.Length ? args[i + 1] : null;
+        var app = new HaloApplication(instance, startedAtSignIn: args.Contains(StartWithWindows.BackgroundArgument), selfTest);
         app.InitializeComponent();
         return app.Run();
     }

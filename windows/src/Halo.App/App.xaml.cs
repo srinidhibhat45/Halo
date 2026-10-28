@@ -25,6 +25,7 @@ internal partial class HaloApplication : Application
 {
     private readonly SingleInstance _instance;
     private readonly bool _startedAtSignIn;
+    private readonly string? _selfTestFolder;
     private AppModel? _model;
     private TriggerHook? _hook;
     private OverlayController? _overlay;
@@ -37,10 +38,11 @@ internal partial class HaloApplication : Application
     private SlotArtwork? _artwork;
     private SettingsWindow? _settings;
 
-    public HaloApplication(SingleInstance instance, bool startedAtSignIn)
+    public HaloApplication(SingleInstance instance, bool startedAtSignIn, string? selfTestFolder = null)
     {
         _instance = instance;
         _startedAtSignIn = startedAtSignIn;
+        _selfTestFolder = selfTestFolder;
     }
 
     protected override void OnStartup(StartupEventArgs e)
@@ -83,6 +85,7 @@ internal partial class HaloApplication : Application
             // Started from the Start menu while not running: show the settings.
             ShowSettings();
         }
+        if (_selfTestFolder is not null) RunSelfTest(_selfTestFolder);
     }
 
     protected override void OnExit(ExitEventArgs e)
@@ -209,6 +212,7 @@ internal partial class HaloApplication : Application
     {
         // A tray utility should survive a bug in one action or page; log it and carry on.
         Trace.TraceError($"Unhandled exception: {e.Exception}");
+        if (_selfTestFolder is not null) _selfTestFailures.Add($"Unhandled exception: {e.Exception.Message}");
         ShowNotice($"Something went wrong: {e.Exception.Message}");
         e.Handled = true;
     }
