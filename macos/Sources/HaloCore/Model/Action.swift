@@ -19,6 +19,8 @@ public enum Action: Hashable, Sendable {
     case appShortcut(AppShortcut)
     /// A command from an app's menu bar, chosen by its menu path.
     case menuItem(MenuItemRef)
+    /// Buttons in an app's window, clicked in order by name (e.g. Teams: More actions › Record).
+    case clickButtons(ButtonSequence)
     case appleScript(ScriptSource)
     case shell(ScriptSource)
     case text(TextSnippet)
@@ -30,7 +32,7 @@ public enum Action: Hashable, Sendable {
 
     public enum Kind: String, Codable, CaseIterable, Sendable {
         case app, url, file, keystroke, media, screenshot, system, edit, window
-        case shortcut, appShortcut, menuItem, appleScript, shell, text, aiPrompt, folder, macro
+        case shortcut, appShortcut, menuItem, clickButtons, appleScript, shell, text, aiPrompt, folder, macro
     }
 
     public var kind: Kind {
@@ -47,6 +49,7 @@ public enum Action: Hashable, Sendable {
         case .shortcut: .shortcut
         case .appShortcut: .appShortcut
         case .menuItem: .menuItem
+        case .clickButtons: .clickButtons
         case .appleScript: .appleScript
         case .shell: .shell
         case .text: .text
@@ -77,6 +80,7 @@ extension Action: Codable {
         case .shortcut: self = .shortcut(try c.decode(ShortcutRef.self, forKey: .value))
         case .appShortcut: self = .appShortcut(try c.decode(AppShortcut.self, forKey: .value))
         case .menuItem: self = .menuItem(try c.decode(MenuItemRef.self, forKey: .value))
+        case .clickButtons: self = .clickButtons(try c.decode(ButtonSequence.self, forKey: .value))
         case .appleScript: self = .appleScript(try c.decode(ScriptSource.self, forKey: .value))
         case .shell: self = .shell(try c.decode(ScriptSource.self, forKey: .value))
         case .text: self = .text(try c.decode(TextSnippet.self, forKey: .value))
@@ -102,6 +106,7 @@ extension Action: Codable {
         case .shortcut(let v): try c.encode(v, forKey: .value)
         case .appShortcut(let v): try c.encode(v, forKey: .value)
         case .menuItem(let v): try c.encode(v, forKey: .value)
+        case .clickButtons(let v): try c.encode(v, forKey: .value)
         case .appleScript(let v): try c.encode(v, forKey: .value)
         case .shell(let v): try c.encode(v, forKey: .value)
         case .text(let v): try c.encode(v, forKey: .value)
@@ -271,6 +276,43 @@ public struct MenuItemRef: Codable, Hashable, Sendable {
         self.bundleID = bundleID
         self.appName = appName
         self.path = path
+        self.delivery = delivery
+    }
+}
+
+/// One control to click, found by its accessible name (what VoiceOver reads).
+public struct ButtonStep: Codable, Hashable, Sendable, Identifiable {
+    public var id: UUID
+    /// Names that identify the control; the first one found is clicked (apps rename controls
+    /// between versions, e.g. "Record" vs "Record and transcribe").
+    public var names: [String]
+    /// Skipped when it doesn't appear (e.g. a confirmation that only some versions show).
+    public var isOptional: Bool
+
+    public init(id: UUID = UUID(), names: [String], isOptional: Bool = false) {
+        self.id = id
+        self.names = names
+        self.isOptional = isOptional
+    }
+}
+
+/// Clicks controls in an app's windows in order, waiting for each to appear (menus, dialogs).
+/// For actions an app offers only as buttons, without a shortcut or menu command.
+public struct ButtonSequence: Codable, Hashable, Sendable {
+    public var bundleID: String
+    public var appName: String
+    /// What it does, e.g. "Start Recording".
+    public var title: String
+    public var steps: [ButtonStep]
+    public var symbol: String?
+    public var delivery: AppDelivery
+
+    public init(bundleID: String, appName: String, title: String, steps: [ButtonStep], symbol: String? = nil, delivery: AppDelivery = .bringToFront) {
+        self.bundleID = bundleID
+        self.appName = appName
+        self.title = title
+        self.steps = steps
+        self.symbol = symbol
         self.delivery = delivery
     }
 }

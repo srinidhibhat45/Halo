@@ -73,7 +73,7 @@ public extension Action {
         case .edit: .edit
         case .window: .window
         case .shortcut: .shortcuts
-        case .appShortcut, .menuItem: .inApp
+        case .appShortcut, .menuItem, .clickButtons: .inApp
         case .appleScript, .shell: .scripts
         case .text: .text
         case .aiPrompt: .ai
@@ -101,6 +101,7 @@ public extension Action {
         case .shortcut(let s): return s.name.isEmpty ? "Shortcut" : s.name
         case .appShortcut(let s): return s.title.isEmpty ? "\(s.appName) Shortcut" : s.title
         case .menuItem(let m): return m.path.last ?? "Menu Command"
+        case .clickButtons(let b): return b.title.isEmpty ? "Click Buttons" : b.title
         case .appleScript: return "AppleScript"
         case .shell: return "Shell Script"
         case .text(let t): return t.text.isEmpty ? "Text" : Self.preview(t.text)
@@ -126,6 +127,7 @@ public extension Action {
         case .shortcut: "square.2.layers.3d.fill"
         case .appShortcut(let s): s.symbol ?? "command"
         case .menuItem: "filemenu.and.selection"
+        case .clickButtons(let b): b.symbol ?? "cursorarrow.click.2"
         case .appleScript: "applescript.fill"
         case .shell: "terminal.fill"
         case .text: "text.cursor"
@@ -146,7 +148,7 @@ public extension Action {
     /// Permissions needed to run this action (macros: the union of their steps).
     var requiredPermissions: Set<Permission> {
         switch self {
-        case .keystroke, .media, .edit, .window, .text, .appShortcut, .menuItem: [.accessibility]
+        case .keystroke, .media, .edit, .window, .text, .appShortcut, .menuItem, .clickButtons: [.accessibility]
         // Screenshots go through the system's own ⇧⌘3/⇧⌘4 shortcuts (Accessibility only);
         // the toolbar opens Screenshot.app and needs nothing.
         case .screenshot(let s): s.mode == .toolbar ? [] : [.accessibility]

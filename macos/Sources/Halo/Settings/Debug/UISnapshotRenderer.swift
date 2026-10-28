@@ -55,6 +55,18 @@ enum UISnapshotRenderer {
             ?? AppInfo(bundleID: "com.microsoft.teams2", name: "Microsoft Teams", url: URL(fileURLWithPath: "/Applications/Microsoft Teams.app"))
         shot.picker("picker-app-ring-teams", title: "Add to Ring", subtitle: "Microsoft Teams ring · Slot 1 · Top", ringApp: teams)
         shot.picker("picker-search-mute", query: "mute", title: "Add to Ring", subtitle: "Slot 5 · Bottom")
+        // A Click Buttons slot (Teams: Start Recording) in the inspector.
+        if let record = AppActionPresets.all.first(where: { $0.id == "teams.record" }),
+           case .clickButtons(let sequence) = record.action(bundleID: "com.microsoft.teams2") {
+            shot.render("inspector-click-buttons", size: CGSize(width: 380, height: 640)) {
+                Form {
+                    Section("Click Buttons") {
+                        ButtonSequenceEditor(sequence: .constant(sequence), setup: .constant(false))
+                    }
+                }
+                .formStyle(.grouped)
+            }
+        }
 
         // The Add App Ring sheet.
         shot.render("add-app-ring", size: AddAppRingSheet.size) { AddAppRingSheet(model: model) { _ in } }

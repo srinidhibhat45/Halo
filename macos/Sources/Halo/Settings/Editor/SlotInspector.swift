@@ -383,6 +383,10 @@ extension Action {
         case .appShortcut(let shortcut):
             guard !shortcut.bundleID.isEmpty else { return "Presses a shortcut in an app you choose" }
             return "Presses \(shortcut.combo.displayString) in \(shortcut.appName)"
+        case .clickButtons(let sequence):
+            let names = sequence.steps.filter { !$0.isOptional }.compactMap(\.names.first)
+            guard !sequence.bundleID.isEmpty, !names.isEmpty else { return "Clicks buttons in an app you choose" }
+            return "Clicks \(names.joined(separator: " › ")) in \(sequence.appName)"
         case .menuItem(let item):
             guard !item.bundleID.isEmpty, !item.path.isEmpty else { return "Runs a menu command in an app you choose" }
             return "Chooses \(item.path.joined(separator: " › ")) in \(item.appName)"
@@ -460,6 +464,7 @@ extension Action.Kind {
         case .shortcut: "Apple Shortcut"
         case .appShortcut: "App Shortcut"
         case .menuItem: "Menu Command"
+        case .clickButtons: "Click Buttons"
         case .appleScript: "AppleScript"
         case .shell: "Shell Script"
         case .text: "Text Snippet"
@@ -490,7 +495,7 @@ extension Action.Kind {
         case .edit: .edit
         case .window: .window
         case .shortcut: .shortcuts
-        case .appShortcut, .menuItem: .inApp
+        case .appShortcut, .menuItem, .clickButtons: .inApp
         case .appleScript, .shell: .scripts
         case .text: .text
         case .aiPrompt: .ai

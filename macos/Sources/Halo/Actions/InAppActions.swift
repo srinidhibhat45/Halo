@@ -41,12 +41,12 @@ enum InAppActions {
 
     // MARK: Focus
 
-    private struct Failure: Error {
+    struct Failure: Error {
         let outcome: ActionOutcome
     }
 
     /// The running app, brought to the front if another app is in front.
-    private static func focus(bundleID: String, appName: String) async -> Result<NSRunningApplication, Failure> {
+    static func focus(bundleID: String, appName: String) async -> Result<NSRunningApplication, Failure> {
         guard !bundleID.isEmpty else { return .failure(Failure(outcome: .failed("Choose an app for this action"))) }
         guard let app = NSRunningApplication.runningApplications(withBundleIdentifier: bundleID).first else {
             return .failure(Failure(outcome: .failed("\(appName) isn't running")))
@@ -60,7 +60,7 @@ enum InAppActions {
     }
 
     /// Returns to the app that was in front, if asked to and the action worked.
-    private static func returnIfNeeded(_ delivery: AppDelivery, from app: NSRunningApplication,
+    static func returnIfNeeded(_ delivery: AppDelivery, from app: NSRunningApplication,
                                        to previous: NSRunningApplication?, after outcome: ActionOutcome) async {
         guard delivery == .bringToFrontAndReturn, let previous, previous.processIdentifier != app.processIdentifier else { return }
         switch outcome {

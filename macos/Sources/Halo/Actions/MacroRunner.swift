@@ -71,7 +71,7 @@ enum MacroRunner {
         case .shortcut(let shortcut): shortcut.passSelection
         case .system(let command): command == .emojiPicker || command == .dictation
         // In-app actions bring their own app forward.
-        case .app, .url, .file, .media, .screenshot, .appleScript, .shell, .folder, .macro, .appShortcut, .menuItem: false
+        case .app, .url, .file, .media, .screenshot, .appleScript, .shell, .folder, .macro, .appShortcut, .menuItem, .clickButtons: false
         }
     }
 }

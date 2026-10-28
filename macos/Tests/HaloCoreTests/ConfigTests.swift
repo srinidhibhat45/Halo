@@ -33,6 +33,8 @@ struct ConfigTests {
                                      combo: KeyCombo(keyCode: KeyCode.m, modifiers: [.shift, .command], keyLabel: "M"),
                                      symbol: "mic.slash", delivery: .bringToFrontAndReturn)),
             .menuItem(MenuItemRef(bundleID: "com.apple.Safari", appName: "Safari", path: ["View", "Show Sidebar"])),
+            .clickButtons(ButtonSequence(bundleID: "com.microsoft.teams2", appName: "Microsoft Teams", title: "Start Recording",
+                                         steps: [ButtonStep(names: ["More actions"]), ButtonStep(names: ["Confirm"], isOptional: true)])),
             .appleScript(ScriptSource(source: "beep")),
             .shell(ScriptSource(source: "say hi", shell: "/bin/zsh")),
             .text(TextSnippet(text: "Hello {date}", method: .type, pressReturn: true)),

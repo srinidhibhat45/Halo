@@ -113,7 +113,7 @@ Open **Halo Settings** from the menu bar icon (Mac) or the tray icon (Windows).
 | Kind | Examples |
 |---|---|
 | Apps | Open, switch to, show/hide or quit an app |
-| In-app actions | An app's own shortcuts, such as **Teams: Mute** or **Zoom: Raise Hand**, sent to that app even from another one; any command from an app's menu bar (Mac) |
+| In-app actions | An app's own shortcuts, such as **Teams: Mute** or **Zoom: Raise Hand**, sent to that app even from another one; any command from an app's menu bar (Mac); buttons clicked in order for things without a shortcut, such as **Teams: Start Recording** (Mac) |
 | Websites, files and folders | Open a page, a deep link, a document or a folder |
 | Media | Play/pause, next, previous, volume, mute, brightness |
 | Screenshots | Area, window or screen, to a file or the clipboard; the screenshot toolbar |
@@ -130,7 +130,9 @@ Meet, Slack, Webex, Discord, Outlook, Word, Excel, PowerPoint, Keynote, Notion, 
 Lightroom, Premiere Pro, Final Cut Pro, DaVinci Resolve, VS Code, Xcode, Chrome, Safari, Arc, Edge,
 Spotify, Music, Finder, Mail and Notes. Give an app its own ring and its actions are listed first;
 meeting controls such as **Mute**, **Camera** and **Raise Hand** can bring the app forward, act, and
-return you to what you were doing. Some apps need a setting first (Zoom's shortcuts work from other
+return you to what you were doing. Where an app has no shortcut for something (Teams' **Start
+Recording** and **Start Transcription**), Halo clicks the app's own buttons for you; add your own
+with **Click Buttons…** and **Add by Pointing**. Some apps need a setting first (Zoom's shortcuts work from other
 apps only when marked "global" in Zoom); the full list, with sources and Windows keys, is in
 [docs/app-actions.json](docs/app-actions.json).
 

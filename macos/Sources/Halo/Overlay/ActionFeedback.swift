@@ -42,7 +42,7 @@ enum ActionFeedback {
         case .edit(let command): command == .copy || command == .cut
         case .media(let command): command == .playPause || command == .nextTrack || command == .previousTrack
         case .system(let command): command == .toggleDarkMode || command == .doNotDisturb
-        case .keystroke, .text, .shortcut, .appleScript, .shell, .macro, .appShortcut, .menuItem: true
+        case .keystroke, .text, .shortcut, .appleScript, .shell, .macro, .appShortcut, .menuItem, .clickButtons: true
         case .app, .url, .file, .screenshot, .window, .aiPrompt, .folder: false
         }
     }

@@ -23,7 +23,7 @@ struct AppShortcutEditor: View {
             }
         }
 
-        let presets = AppActionPresets.presets(forBundleID: shortcut.bundleID)
+        let presets = AppActionPresets.presets(forBundleID: shortcut.bundleID).filter { $0.combo != nil }
         if !presets.isEmpty {
             LabeledContent("Preset") {
                 Menu {
@@ -31,7 +31,7 @@ struct AppShortcutEditor: View {
                         Button {
                             apply(preset)
                         } label: {
-                            Label("\(preset.title)  \(preset.combo.displayString)", systemImage: preset.symbol)
+                            Label("\(preset.title)  \(preset.how)", systemImage: preset.symbol)
                         }
                     }
                 } label: {
@@ -58,8 +58,9 @@ struct AppShortcutEditor: View {
     }
 
     private func apply(_ preset: AppActionPreset) {
+        guard let combo = preset.combo else { return }
         shortcut.title = preset.title
-        shortcut.combo = preset.combo
+        shortcut.combo = combo
         shortcut.symbol = preset.symbol
         shortcut.delivery = preset.delivery
     }
@@ -200,6 +201,159 @@ private extension MenuNode {
     var optionalChildren: [MenuNode]? { children.isEmpty ? nil : children }
 }
 
+// MARK: - Click Buttons
+
+/// Buttons in an app's window clicked in order, by their accessible names (Teams: More actions ›
+/// Record › Confirm). Steps can be typed, taken from the app's presets, or picked by pointing.
+struct ButtonSequenceEditor: View {
+    @Binding var sequence: ButtonSequence
+    @Binding var setup: Bool
+    /// Seconds left before reading the control under the pointer, while pointing.
+    @ViewState private var countdown: Int?
+    @ViewState private var pointingNote: String?
+
+    var body: some View {
+        InAppTargetRow(bundleID: sequence.bundleID, appName: sequence.appName, setup: $setup) { app in
+            sequence.bundleID = app.bundleID
+            sequence.appName = app.name
+            if sequence.steps.isEmpty, let preset = presets.first { apply(preset) }
+        }
+        if !presets.isEmpty {
+            LabeledContent("Preset") {
+                Menu {
+                    ForEach(presets) { preset in
+                        Button { apply(preset) } label: { Label(preset.title, systemImage: preset.symbol) }
+                    }
+                } label: {
+                    Text(presets.first { $0.title == sequence.title }?.title ?? "Custom")
+                }
+                .fixedSize()
+            }
+        }
+        CommittingTextField("Name", text: $sequence.title, prompt: "What it does, e.g. Start Recording")
+
+        ForEach(Array(sequence.steps.enumerated()), id: \.element.id) { index, step in
+            StepRow(index: index, count: sequence.steps.count, step: stepBinding(step.id),
+                    move: { move(step.id, by: $0) }, remove: { sequence.steps.removeAll { $0.id == step.id } })
+        }
+        HStack {
+            Button("Add Step") { sequence.steps.append(ButtonStep(names: [])) }
+            Button(countdown.map { "Point at the Button… \($0)" } ?? "Add by Pointing…") { startPointing() }
+                .disabled(countdown != nil)
+                .help("Gives you 5 seconds to hover over the button (open its menu first if needed); Halo reads its name")
+        }
+        if let pointingNote {
+            Text(pointingNote).font(.caption).foregroundStyle(.secondary)
+        }
+        Text("Halo finds each button by the name VoiceOver reads. List alternatives separated by commas; an optional step is skipped when it doesn't appear.")
+            .font(.caption)
+            .foregroundStyle(.secondary)
+        DeliveryPicker(delivery: $sequence.delivery, appName: sequence.appName)
+    }
+
+    private var presets: [AppActionPreset] {
+        AppActionPresets.presets(forBundleID: sequence.bundleID).filter { $0.buttons != nil }
+    }
+
+    private func apply(_ preset: AppActionPreset) {
+        sequence.title = preset.title
+        sequence.steps = (preset.buttons ?? []).map { ButtonStep(names: $0.names, isOptional: $0.isOptional) }
+        sequence.symbol = preset.symbol
+        sequence.delivery = preset.delivery
+    }
+
+    private func stepBinding(_ id: ButtonStep.ID) -> Binding<ButtonStep> {
+        Binding(
+            get: { sequence.steps.first { $0.id == id } ?? ButtonStep(id: id, names: []) },
+            set: { newValue in
+                guard let i = sequence.steps.firstIndex(where: { $0.id == id }) else { return }
+                sequence.steps[i] = newValue
+            }
+        )
+    }
+
+    private func move(_ id: ButtonStep.ID, by offset: Int) {
+        guard let i = sequence.steps.firstIndex(where: { $0.id == id }), sequence.steps.indices.contains(i + offset) else { return }
+        sequence.steps.swapAt(i, i + offset)
+    }
+
+    /// Counts down, then reads the control under the pointer and adds it as a step.
+    private func startPointing() {
+        pointingNote = nil
+        Task { @MainActor in
+            for remaining in stride(from: 5, through: 1, by: -1) {
+                countdown = remaining
+                try? await Task.sleep(for: .seconds(1))
+            }
+            countdown = nil
+            guard let found = await ButtonActions.controlUnderPointer() else {
+                pointingNote = PermissionCenter.shared.status(.accessibility) == .granted
+                    ? "No named button was under the pointer. Try hovering right over it."
+                    : "Halo needs Accessibility permission to read buttons."
+                NSApp.activate()
+                return
+            }
+            if sequence.bundleID.isEmpty {
+                sequence.bundleID = found.bundleID
+                sequence.appName = found.appName
+            }
+            if found.bundleID == sequence.bundleID {
+                sequence.steps.append(ButtonStep(names: [found.name]))
+                pointingNote = "Added “\(found.name)”."
+            } else {
+                pointingNote = "That button is in \(found.appName), not \(sequence.appName)."
+            }
+            NSApp.activate()
+        }
+    }
+}
+
+/// One step: its names, optional switch, and move/remove controls.
+private struct StepRow: View {
+    let index: Int
+    let count: Int
+    @Binding var step: ButtonStep
+    let move: (Int) -> Void
+    let remove: () -> Void
+
+    var body: some View {
+        HStack(spacing: 6) {
+            Text("\(index + 1)")
+                .font(.callout.monospacedDigit())
+                .foregroundStyle(.secondary)
+                .frame(width: 16)
+            CommittingTextField("Step \(index + 1)", text: namesText, prompt: "Button name, e.g. More actions")
+                .labelsHidden()
+                .help(step.names.joined(separator: ", "))
+            Toggle("Optional", isOn: $step.isOptional)
+                .toggleStyle(.checkbox)
+                .help("Skip this step when the button doesn't appear")
+            ControlGroup {
+                Button { move(-1) } label: { Image(systemName: "chevron.up") }
+                    .disabled(index == 0)
+                    .accessibilityLabel("Move step up")
+                Button { move(1) } label: { Image(systemName: "chevron.down") }
+                    .disabled(index == count - 1)
+                    .accessibilityLabel("Move step down")
+            }
+            .fixedSize()
+            Button(role: .destructive, action: remove) { Image(systemName: "minus.circle") }
+                .buttonStyle(.borderless)
+                .accessibilityLabel("Remove step \(index + 1)")
+        }
+    }
+
+    /// The names as "More actions, More".
+    private var namesText: Binding<String> {
+        Binding(
+            get: { step.names.joined(separator: ", ") },
+            set: { text in
+                step.names = text.split(separator: ",").map { $0.trimmingCharacters(in: .whitespaces) }.filter { !$0.isEmpty }
+            }
+        )
+    }
+}
+
 // MARK: - Shared rows
 
 /// The app an in-app action belongs to, with a picker.
@@ -264,8 +418,8 @@ private struct DeliveryPicker: View {
         }
         .pickerStyle(.segmented)
         Text(delivery == .bringToFrontAndReturn
-             ? "Works from any app: Halo brings \(appName.isEmpty ? "the app" : appName) forward, sends it, then returns you to where you were."
-             : "Halo brings \(appName.isEmpty ? "the app" : appName) to the front if it isn't already, then sends it.")
+             ? "Works from any app: Halo brings \(appName.isEmpty ? "the app" : appName) forward, does this, then returns you to where you were."
+             : "Halo brings \(appName.isEmpty ? "the app" : appName) to the front if it isn't already, then does this.")
             .font(.caption)
             .foregroundStyle(.secondary)
     }

@@ -75,6 +75,10 @@ struct ActionDetailsEditor: View {
             group("Menu Command", footer: "Any command in the app's menu bar, by name. If the app renames it, choose it again.") {
                 MenuItemEditor(item: payload(item, { if case .menuItem(let v) = $0 { v } else { nil } }, Action.menuItem), setup: $setup)
             }
+        case .clickButtons(let sequence):
+            group("Click Buttons", footer: "For actions an app offers only as buttons. Works while the app shows those buttons, e.g. during a meeting.") {
+                ButtonSequenceEditor(sequence: payload(sequence, { if case .clickButtons(let v) = $0 { v } else { nil } }, Action.clickButtons), setup: $setup)
+            }
         case .appleScript(let source):
             group("AppleScript", footer: "Runs with Automation permission; the first run asks to control each app the script talks to.") {
                 ScriptActionEditor(source: payload(source, { if case .appleScript(let v) = $0 { v } else { nil } }, Action.appleScript), isShell: false, setup: $setup)

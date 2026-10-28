@@ -1,6 +1,7 @@
 import Foundation
 
-/// A ready-made in-app action: one app's documented keyboard shortcut, e.g. Teams' Mute.
+/// A ready-made in-app action: one app's documented keyboard shortcut (Teams' Mute), or, where the
+/// app has no shortcut, its documented buttons clicked in order (Teams' Start Recording).
 public struct AppActionPreset: Identifiable, Hashable, Sendable {
     /// Stable id, e.g. "teams.mute".
     public var id: String
@@ -9,7 +10,10 @@ public struct AppActionPreset: Identifiable, Hashable, Sendable {
     public var bundleIDs: [String]
     public var title: String
     public var symbol: String
-    public var combo: KeyCombo
+    /// The shortcut, for shortcut presets.
+    public var combo: KeyCombo?
+    /// The buttons to click, for presets without a shortcut.
+    public var buttons: [ButtonStep]?
     /// Meeting controls default to "bring forward, send, return", so they work from any app.
     public var delivery: AppDelivery
     /// Where the shortcut is documented.
@@ -27,23 +31,73 @@ public struct AppActionPreset: Identifiable, Hashable, Sendable {
         self.source = source
     }
 
+    public init(id: String, appName: String, bundleIDs: [String], title: String, symbol: String, buttons: [ButtonStep],
+                delivery: AppDelivery = .bringToFront, source: String) {
+        self.id = id
+        self.appName = appName
+        self.bundleIDs = bundleIDs
+        self.title = title
+        self.symbol = symbol
+        self.buttons = buttons
+        self.delivery = delivery
+        self.source = source
+    }
+
     /// The action for this preset, aimed at `bundleID` (pick the installed variant) or the first.
     public func action(bundleID: String? = nil) -> Action {
-        .appShortcut(AppShortcut(bundleID: bundleID ?? bundleIDs.first ?? "", appName: appName, title: title,
-                                 combo: combo, symbol: symbol, delivery: delivery))
+        let target = bundleID ?? bundleIDs.first ?? ""
+        if let combo {
+            return .appShortcut(AppShortcut(bundleID: target, appName: appName, title: title, combo: combo, symbol: symbol, delivery: delivery))
+        }
+        return .clickButtons(ButtonSequence(bundleID: target, appName: appName, title: title, steps: buttons ?? [], symbol: symbol, delivery: delivery))
+    }
+
+    /// "⇧⌘M", or "More actions › Record" for button presets.
+    public var how: String {
+        if let combo { return combo.displayString }
+        return (buttons ?? []).filter { !$0.isOptional }.compactMap(\.names.first).joined(separator: " › ")
     }
 
     /// The library/picker entry.
     public var template: ActionTemplate {
         ActionTemplate(id: "preset.\(id)", category: .inApp, title: title,
-                       subtitle: "\(appName) · \(combo.displayString)", symbol: symbol,
+                       subtitle: "\(appName) · \(how)", symbol: symbol,
                        action: action(), keywords: [appName, "in-app", "app action"] + bundleIDs)
     }
 }
 
 /// Curated in-app shortcuts for popular apps, from each app's own documentation.
 public enum AppActionPresets {
-    public static let all: [AppActionPreset] = catalog
+    /// Every preset: the generated shortcut catalogue, with button presets placed after the
+    /// shortcut they belong next to.
+    public static let all: [AppActionPreset] = catalog.flatMap { preset in
+        [preset] + buttonPresets.filter { $0.after == preset.id }.map(\.preset)
+    }
+
+    /// Presets for actions that have no shortcut, clicked through the app's own buttons. Names
+    /// come from the app's documentation; alternatives cover older and newer versions.
+    static let buttonPresets: [(after: String, preset: AppActionPreset)] = [
+        (after: "teams.captions", preset: AppActionPreset(
+            id: "teams.record", appName: "Microsoft Teams", bundleIDs: ["com.microsoft.teams2", "com.microsoft.teams"],
+            title: "Start Recording", symbol: "record.circle",
+            buttons: [
+                ButtonStep(names: ["More actions", "More"]),
+                ButtonStep(names: ["Record", "Record and transcribe", "Start recording"]),
+                ButtonStep(names: ["Start recording"], isOptional: true),
+                ButtonStep(names: ["Confirm"], isOptional: true),
+            ],
+            source: "https://support.microsoft.com/en-us/teams/meetings/start-stop-and-find-meeting-recordings-in-microsoft-teams")),
+        (after: "teams.captions", preset: AppActionPreset(
+            id: "teams.transcribe", appName: "Microsoft Teams", bundleIDs: ["com.microsoft.teams2", "com.microsoft.teams"],
+            title: "Start Transcription", symbol: "text.bubble",
+            buttons: [
+                ButtonStep(names: ["More actions", "More"]),
+                ButtonStep(names: ["Record and transcribe", "Transcribe", "Start transcription"]),
+                ButtonStep(names: ["Start transcription"], isOptional: true),
+                ButtonStep(names: ["Confirm"], isOptional: true),
+            ],
+            source: "https://support.microsoft.com/en-us/teams/meetings/start-stop-and-download-live-transcripts-in-microsoft-teams-meetings")),
+    ]
 
     /// Presets for the app with `bundleID`.
     public static func presets(forBundleID bundleID: String) -> [AppActionPreset] {

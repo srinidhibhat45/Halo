@@ -61,6 +61,7 @@ final class ActionRunner {
         case .shortcut(let shortcut): await ScriptActions.runShortcut(shortcut)
         case .appShortcut(let shortcut): await InAppActions.run(shortcut, context: context)
         case .menuItem(let item): await InAppActions.run(item, context: context)
+        case .clickButtons(let sequence): await ButtonActions.run(sequence, context: context)
         case .appleScript(let script): await ScriptActions.runAppleScript(script)
         case .shell(let script): await ScriptActions.runShell(script)
         case .text(let snippet): await TextActions.run(snippet)

@@ -18,7 +18,11 @@ struct AppActionPresetsTests {
     @Test("Every preset's key is one `keys(_:_:)` knows and has a modifier or is a function key")
     func keys() {
         for preset in AppActionPresets.all {
-            #expect(AppActionPresets.isKnownKey(preset.combo.keyLabel), "\(preset.id): unknown key \(preset.combo.keyLabel)")
+            if let combo = preset.combo {
+                #expect(AppActionPresets.isKnownKey(combo.keyLabel), "\(preset.id): unknown key \(combo.keyLabel)")
+            } else {
+                #expect(preset.buttons?.contains { !$0.isOptional } == true, "\(preset.id): neither keys nor buttons")
+            }
         }
     }
 
@@ -33,6 +37,11 @@ struct AppActionPresetsTests {
         let titles = AppActionPresets.presets(forBundleID: "com.microsoft.teams2").map(\.title)
         #expect(titles.contains("Mute / Unmute"))
         #expect(titles.contains("Raise / Lower Hand"))
+        #expect(titles.contains("Start Recording"))
+        #expect(titles.contains("Start Transcription"))
+        // Recording comes right after Live Captions, so a new Teams ring gets it.
+        let ids = AppActionPresets.presets(forBundleID: "com.microsoft.teams2").map(\.id)
+        #expect(ids.firstIndex(of: "teams.record") == ids.firstIndex(of: "teams.captions").map { $0 + 1 })
     }
 
     @Test("Suggested slots take the app's presets in order, aimed at that app")

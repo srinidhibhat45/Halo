@@ -69,6 +69,9 @@ public enum ActionCatalog {
         ActionTemplate(id: "inapp.menu", category: .inApp, title: "Menu Command…", subtitle: "Any command from an app's menu bar", symbol: "filemenu.and.selection",
                        action: .menuItem(MenuItemRef(bundleID: "", appName: "App", path: [])),
                        needsSetup: true, keywords: ["menu bar", "menu item", "command", "in-app"]),
+        ActionTemplate(id: "inapp.buttons", category: .inApp, title: "Click Buttons…", subtitle: "Buttons in an app's window, clicked in order", symbol: "cursorarrow.click.2",
+                       action: .clickButtons(ButtonSequence(bundleID: "", appName: "App", title: "", steps: [])),
+                       needsSetup: true, keywords: ["button", "click", "press", "ui", "automation", "in-app", "record"]),
     ]
 
     static var inAppPresets: [ActionTemplate] { AppActionPresets.all.map(\.template) }
