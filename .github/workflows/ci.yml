@@ -73,7 +73,7 @@ jobs:
           New-Item -ItemType Directory -Force $out | Out-Null
           $report = Join-Path $out 'report.txt'
 
-          $setup = Start-Process artifacts/releases/HaloSetup.exe -PassThru `
+          $setup = Start-Process (Resolve-Path artifacts/releases/HaloSetup.exe).Path -PassThru `
             -ArgumentList '--silent', '--log', (Join-Path $out 'setup.log'), '--', '--self-test', $out
           if (-not $setup.WaitForExit(300000)) { throw 'Setup did not finish within 5 minutes.' }
           if ($setup.ExitCode -ne 0) { Get-Content (Join-Path $out 'setup.log'); throw "Setup failed (exit code $($setup.ExitCode))." }

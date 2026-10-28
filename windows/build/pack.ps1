@@ -48,9 +48,9 @@ function Invoke-Checked([string] $what, [scriptblock] $command) {
 }
 
 # The vpk CLI must match the Velopack library the app references.
-$velopackVersion = ([xml](Get-Content $project)).Project.ItemGroup.PackageReference |
-    Where-Object { $_.Include -eq 'Velopack' } | Select-Object -ExpandProperty Version -First 1
-if (-not $velopackVersion) { throw "Couldn't find the Velopack package version in $project." }
+$velopackReference = ([xml](Get-Content $project)).SelectSingleNode("//PackageReference[@Include='Velopack']")
+if (-not $velopackReference) { throw "Couldn't find the Velopack package version in $project." }
+$velopackVersion = $velopackReference.GetAttribute('Version')
 
 Remove-Item $publishDir, $releaseDir -Recurse -Force -ErrorAction SilentlyContinue
 New-Item -ItemType Directory -Force $releaseDir, $toolDir | Out-Null
