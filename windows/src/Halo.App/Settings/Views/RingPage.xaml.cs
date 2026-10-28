@@ -48,7 +48,8 @@ internal partial class RingPage : UserControl
         if (_canvas is null || _model is null) return;
         var m = _model.Preview.Layout.Metrics;
         var side = (m.OuterRadius + (_model.Preview.LabelMode == Halo.Core.LabelMode.Always ? 110 : 40) * m.Scale) * 2;
-        if (Math.Abs(_canvas.Width - side) > 0.5) _canvas.Width = _canvas.Height = side;
+        // Width starts as NaN (unset), which never compares as different.
+        if (double.IsNaN(_canvas.Width) || Math.Abs(_canvas.Width - side) > 0.5) _canvas.Width = _canvas.Height = side;
     }
 
     private void OnCanvasClick(object sender, MouseButtonEventArgs e)

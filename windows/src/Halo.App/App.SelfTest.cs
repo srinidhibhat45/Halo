@@ -1,9 +1,12 @@
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Windows;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Halo.App.Interop;
 using Halo.App.Overlay;
 using Halo.App.Platform;
+using Halo.App.Rendering;
 using Halo.Core;
 using Halo.Core.Editing;
 using Halo.Core.Storage;
@@ -51,7 +54,13 @@ internal partial class HaloApplication
 
             _settings?.Model.Navigate(new RingAddress(RingTarget.Everywhere), null);
             await Task.Delay(TimeSpan.FromSeconds(1));
+            Check("Ring editor shows the ring", PreviewSize(RingMode.Editor) is { } editor && editor.Width > 50, $"{PreviewSize(RingMode.Editor)}");
             Capture(folder, "2-ring-editor.png", report);
+
+            _settings?.Model.ShowPage("appearance");
+            await Task.Delay(TimeSpan.FromSeconds(1));
+            Check("Appearance shows the ring", PreviewSize(RingMode.Preview) is { } appearance && appearance.Width > 50, $"{PreviewSize(RingMode.Preview)}");
+            Capture(folder, "2b-appearance.png", report);
 
             // The trigger, sent like mouse software sends it (injected, not tagged as Halo's own).
             var screen = Displays.At(0, 0).Bounds;
@@ -91,6 +100,23 @@ internal partial class HaloApplication
         try { File.WriteAllText(Path.Combine(folder, "report.txt"), report.ToString()); } catch (IOException) { }
         Console.Out.Write(report.ToString());
         Shutdown(_selfTestFailures.Count == 0 ? 0 : 1);
+    }
+
+    /// <summary>The on-screen size of the settings window's ring canvas in <paramref name="mode"/>, if one is shown.</summary>
+    private Size? PreviewSize(RingMode mode)
+    {
+        if (_settings is null) return null;
+        var pending = new Stack<DependencyObject>([_settings]);
+        while (pending.Count > 0)
+        {
+            var element = pending.Pop();
+            if (element is RingCanvas { Model: { } model } canvas && model.Mode == mode && canvas.IsVisible)
+            {
+                return canvas.TransformToAncestor(_settings).TransformBounds(new Rect(canvas.RenderSize)).Size;
+            }
+            for (var i = VisualTreeHelper.GetChildrenCount(element) - 1; i >= 0; i--) pending.Push(VisualTreeHelper.GetChild(element, i));
+        }
+        return null;
     }
 
     /// <summary>Saves the primary display to a PNG (a missing screenshot is noted, not a failure).</summary>
