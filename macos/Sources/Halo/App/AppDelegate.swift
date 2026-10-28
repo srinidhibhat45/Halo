@@ -21,6 +21,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         // LSUIElement already makes Halo an accessory; this covers running the bare executable.
         NSApp.setActivationPolicy(.accessory)
+        if InstallLocation.offerMoveIfNeeded() {
+            isHandingOff = true   // quitting for the moved copy: nothing to save yet
+            NSApp.terminate(nil)
+            return
+        }
         MainMenu.install()
         listenForShowSettingsRequests()
 

@@ -38,24 +38,34 @@ account and sends nothing anywhere. It is not affiliated with Logitech.
 
 ## Install
 
-Download the latest version from **[Releases](https://github.com/srinidhibhat45/Halo/releases/latest)**.
+| | Download | Needs |
+|---|---|---|
+| **Mac** | **[Halo-mac.dmg](https://github.com/srinidhibhat45/Halo/releases/latest/download/Halo-mac.dmg)** | macOS 26 Tahoe or later, Apple silicon or Intel |
+| **Windows** | **[HaloSetup.exe](https://github.com/srinidhibhat45/Halo/releases/latest/download/HaloSetup.exe)** | Windows 10 or 11, 64-bit |
 
-### macOS (26 Tahoe or later)
+Both links always give you the latest version. Release notes and older versions are on the
+**[Releases](https://github.com/srinidhibhat45/Halo/releases)** page.
 
-1. Download `Halo-<version>-mac.dmg` and open it.
-2. Drag **Halo** onto **Applications**.
-3. Open Halo from Applications.
+### macOS
 
-Halo isn't notarised by Apple yet, so the first time macOS may say it "can't be opened". Open
-**System Settings › Privacy & Security**, scroll down and click **Open Anyway** next to Halo.
-You only do this once.
+1. Open `Halo-mac.dmg` and drag **Halo** onto **Applications**.
+2. Open Halo from your Applications folder.
+3. Halo isn't notarised by Apple (that needs a paid developer account), so the first time macOS
+   says **"Halo" Not Opened** because it couldn't verify it. Click **Done**, then open
+   **System Settings › Privacy & Security**, scroll down to **Security** and click **Open Anyway**
+   next to Halo. Enter your password and click **Open Anyway** once more. You only do this once;
+   updates install from inside Halo without it.
 
-### Windows (10 and 11)
+If you open Halo straight from the disk image, it offers to move itself to Applications.
 
-1. Download `HaloSetup.exe` and run it. Halo installs for your user account, no admin rights needed.
-2. Halo starts and its icon appears in the notification area (next to the clock).
+### Windows
 
-Halo isn't code-signed for Windows yet, so SmartScreen may warn you. Click **More info › Run anyway**.
+1. Run `HaloSetup.exe`. Halo isn't code-signed yet, so SmartScreen may say "Windows protected
+   your PC": click **More info › Run anyway**.
+2. Halo installs for your user account (no admin rights needed), starts, and its icon appears in
+   the notification area next to the clock. It's in the Start menu too.
+
+To remove Halo, use **Settings › Apps › Installed apps › Halo › Uninstall**.
 
 ## First steps
 
@@ -162,6 +172,16 @@ release and whose app identity matches Halo.
 
 ## Troubleshooting
 
+**macOS won't open Halo and there's no "Open Anyway" button.** The button appears in
+**Privacy & Security** only for about an hour after macOS blocked Halo, so open Halo once more and
+go straight there. As an alternative, in Terminal:
+
+```bash
+xattr -dr com.apple.quarantine /Applications/Halo.app
+```
+
+That clears the "downloaded from the internet" mark from Halo only; then open Halo normally.
+
 **The ring doesn't appear.** Another app may already use the shortcut: open **Settings › General**,
 which shows whether the shortcut is active, and record a different one. Also check that Halo isn't
 paused (menu bar or tray icon).
@@ -220,12 +240,14 @@ VERSION    The version of both apps
 ## Publishing a release
 
 1. Set the new version in `VERSION` and write `docs/release-notes/<version>.md`.
-2. Build the macOS files: `cd macos && make release` (a universal DMG, the update zip and checksums
-   in `macos/dist/`).
-3. Publish: `make publish`. This creates the GitHub release with the macOS files after asking you
-   to confirm.
-4. GitHub Actions then builds the Windows installer and update files and adds them to the same
-   release. Installed copies on both platforms offer the update within a day.
+2. Commit and push, and check that CI is green: it also installs and runs the Windows installer on
+   a clean machine.
+3. Build the macOS files: `make release` (a universal DMG, the update zip and checksums in
+   `macos/dist/`).
+4. Publish: `make publish`. After you confirm, it creates the GitHub release with the macOS files.
+   It refuses if the files weren't built from the pushed commit or the version already exists.
+5. GitHub Actions then builds the Windows installer and update files and adds them to the same
+   release (about 10 minutes). Installed copies on both platforms offer the update within a day.
 
 ## License
 
